@@ -1,15 +1,16 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>complete responsive app landing page website design tutorial</title>
 
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <!-- custom css file link  -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
 </head>
 <body>
@@ -18,7 +19,7 @@
 
 <header>
 
-    <a href="#" class="logo"><span>Home</span>Page</a>
+    <a href="#home" class="logo"><span>Home</span>Page</a>
 
     <input type="checkbox" id="menu-bar">
     <label for="menu-bar" class="fas fa-bars"></label>
@@ -45,7 +46,7 @@
     </div>
 
     <div class="image">
-        <img src="images/home-img.png" alt="">
+        <img src="{% static 'images/home-img.png' %}" alt="">
     </div>
 
 </section>
@@ -61,21 +62,21 @@
     <div class="box-container">
 
         <div class="box">
-            <img src="images/manage.svg" alt="">
+            <img src="{% static 'images/manage.svg' %}" alt="">
             <h3>MANAGE</h3>
             <p>Simplify teaching and learning</p>
             <a class="btn">read more</a>
         </div>
 
         <div class="box">
-            <img src="images/measure.svg" alt="">
+            <img src="{% static 'images/measure.svg' %}" alt="">
             <h3>MEASURE</h3>
             <p>Move students forward</p>
             <a class="btn">read more</a>
         </div>
 
         <div class="box">
-            <img src="images/collaborate.svg" alt="">
+            <img src="{% static 'images/collaborate.svg' %}" alt="">
             <h3>COLLABORATE</h3>
             <p>Strengthen student connections</p>
             <a class="btn">read more</a>
@@ -96,7 +97,7 @@
     <div class="column">
 
         <div class="image">
-            <img src="images/about.svg" alt="">
+            <img src="{% static 'images/about.svg' %}" alt="">
         </div>
 
         <div class="content">
@@ -158,15 +159,15 @@
 <div class="full-container">
     <div class="popup-container">
         <label class="close-btn fas fa-times" onclick="closeForm()"></label>
-        <div class="text">Login Form</div>
-        <form action="login" method="POST"> {% csrf_token %}
+        <div class="text">Login</div>
+        <form action="#">
             <div class="data">
-                <label>Email</label>
-                <input type="email" name="email" required>
+                <label>Username</label>
+                <input type="text" required>
             </div>
             <div class="data">
                 <label>Password</label>
-                <input type="password" name="psw" required>
+                <input type="password" required>
             </div>
         
             <div class="btn-p">
@@ -177,7 +178,7 @@
     </div>
 </div>
 
-<script src="js/app.js"></script>
+<script src="{% static 'js/app.js' %}"></script>
 
 </body>
 </html>

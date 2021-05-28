@@ -54,7 +54,7 @@ ROOT_URLCONF = 'SchoolProjectS6.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'SchoolProjectS6/templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'SchoolProjectS6/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -77,11 +77,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'courses',
-        'HOST' : '127.0.0.1',
-        'PORT' : '3306',
-        'USER' : 'root',
-        'PASSWORD' : 'Hajar2000',
-    
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'USER': 'root',
+        'PASSWORD': 'Hajar2000',
+        # 'PASSWORD': '',
+
     }
 }
 
@@ -132,4 +133,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'design')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
-MEDIA_ROOR =os.path.join(BASE_DIR,'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'SchoolProjectS6/media')
