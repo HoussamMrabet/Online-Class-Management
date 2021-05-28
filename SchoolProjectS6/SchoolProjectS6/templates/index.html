@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+<!-- header section starts  -->
+
+<header>
+
+    <a href="#" class="logo"><span>Home</span>Page</a>
+
+    <input type="checkbox" id="menu-bar">
+    <label for="menu-bar" class="fas fa-bars"></label>
+
+    <nav class="navbar">
+        <a href="#home">home</a>
+        <a href="#features">features</a>
+        <a href="#about">about</a>
+        <a class="btn" style="color: #fff;" onclick="openForm()">Log In</a>
+    </nav>
+
+</header>
+
+<!-- header section ends -->
+
+<!-- home section starts  -->
+
+<section class="home" id="home">
+
+    <div class="content">
+        <h3>online class <span>management</span></h3>
+        <p>Get more time to teach and inspire learners with Classroom.</p>
+        <a href="#" class="btn" onclick="openForm()">Login</a>
+    </div>
+
+    <div class="image">
+        <img src="images/home-img.png" alt="">
+    </div>
+
+</section>
+
+<!-- home section ends -->
+
+<!-- features section starts  -->
+
+<section class="features" id="features">
+
+    <h1 class="heading"> features </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <img src="images/manage.svg" alt="">
+            <h3>MANAGE</h3>
+            <p>Simplify teaching and learning</p>
+            <a class="btn">read more</a>
+        </div>
+
+        <div class="box">
+            <img src="images/measure.svg" alt="">
+            <h3>MEASURE</h3>
+            <p>Move students forward</p>
+            <a class="btn">read more</a>
+        </div>
+
+        <div class="box">
+            <img src="images/collaborate.svg" alt="">
+            <h3>COLLABORATE</h3>
+            <p>Strengthen student connections</p>
+            <a class="btn">read more</a>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- features section ends -->
+
+<!-- about section starts  -->
+
+<section class="about" id="about">
+
+    <h1 class="heading"> about </h1>
+
+    <div class="column">
+
+        <div class="image">
+            <img src="images/about.svg" alt="">
+        </div>
+
+        <div class="content">
+            <h3>Easy And Perfect Solution For Your Online Class Management</h3>
+            <p>Get it as part of Workspace for Education</p>
+            <p>If you’re using it in school, we recommend signing up for Education Workspace. It is already included in Workspace for Education and works seamlessly with Workspace collaboration tools.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- about section ends -->
+
+<!-- footer section starts  -->
+
+<div class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3>about us</h3>
+            <p>A free and easy tool helping educators efficiently manage and assess progress, while enhancing connections with learners from school, from home, or on the go.</p>
+        </div>
+
+        <div class="box">
+            <h3>quick links</h3>
+            <a href="#home">home</a>
+            <a href="#features">features</a>
+            <a href="#about">about</a>
+        </div>
+
+        <div class="box">
+            <h3>follow us</h3>
+            <a href="">Linkedin</a>
+            <a href="">Github</a>
+        </div>
+
+        <div class="box">
+            <h3>contact info</h3>
+            <div class="info">
+                <i class="fas fa-phone"></i>
+                <p> +212 601-409071 <br> +212 613-357700 </p>
+            </div>
+            <div class="info">
+                <i class="fas fa-envelope"></i>
+                <p> hajar.aitabdielmomin@uit.ac.ma <br> houssam.mrabet@uit.ac.ma </p>
+            </div>
+        </div>
+
+    </div>
+
+    <h1 class="credit"> &copy; copyright - 2021</h1>
+
+</div>
+
+<!-- footer section ends -->
+
+<div class="full-container">
+    <div class="popup-container">
+        <label class="close-btn fas fa-times" onclick="closeForm()"></label>
+        <div class="text">Login Form</div>
+        <form action="login" method="POST"> {% csrf_token %}
+            <div class="data">
+                <label>Email</label>
+                <input type="email" name="email" required>
+            </div>
+            <div class="data">
+                <label>Password</label>
+                <input type="password" name="psw" required>
+            </div>
+        
+            <div class="btn-p">
+                <div class="inner"></div>
+                <button type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>
