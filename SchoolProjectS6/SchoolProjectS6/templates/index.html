@@ -160,19 +160,20 @@
     <div class="popup-container">
         <label class="close-btn fas fa-times" onclick="closeForm()"></label>
         <div class="text">Login</div>
-        <form action="#">
+        <form action="{% url 'PFES6:login' %}" method="POST">
+            {% csrf_token %}
             <div class="data">
-                <label>Username</label>
-                <input type="text" required>
+                <label>Email</label>
+                <input type="email" name="email" required>
             </div>
             <div class="data">
                 <label>Password</label>
-                <input type="password" required>
+                <input type="password" name="password" required>
             </div>
         
             <div class="btn-p">
                 <div class="inner"></div>
-                <button type="submit">Login</button>
+                <button type="submit" value="login">Login</button>
             </div>
         </form>
     </div>
