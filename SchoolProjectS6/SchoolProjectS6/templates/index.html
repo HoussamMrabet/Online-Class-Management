@@ -162,7 +162,7 @@
         <div class="text">Login</div>
 
             
-<form action="login" method="POST">
+<form action="{% url 'PFES6:login' %}" method="POST">
     {% csrf_token %}
     <div class="data">
         <label>Email</label>
