@@ -1,0 +1,162 @@
+{% extends "student/base.html" %}
+{% load static %}
+
+{% block sidebar %}
+<ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <div class="sidebar-brand-icon">
+      Online Class
+    </div>
+    <div class="sidebar-brand-text mx-3"></div>
+  </a>
+  <hr class="sidebar-divider my-0">
+  <li class="nav-item">
+    <a class="nav-link" href="index.html">
+      <i class="fas fa-book"></i>
+      <span>My Courses</span></a>
+  </li>
+  <hr class="sidebar-divider">
+  <div class="sidebar-heading">
+    Actions
+  </div>
+  <li class="nav-item">
+    <a class="nav-link" href="Join_Course.html">
+      <i class="fas fa-plus-square"></i>
+      <span>Join Course</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="to_do.html">
+      <i class="fas fa-clipboard-check"></i>
+      <span>To do</span>
+    </a>
+  </li>
+  <hr class="sidebar-divider">
+  <div class="sidebar-heading">
+    Settings
+  </div>
+  <li class="nav-item active">
+    <a class="nav-link" href="edit_profile.html">
+      <i class="fas fa-user-edit"></i>
+      <span>Edit Profile</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="javascript:void(0);" data-toggle="modal" data-target="#logoutModal">
+      <i class="fas fa-sign-out-alt"></i>
+      <span>Logout</span>
+    </a>
+  </li>
+  <hr class="sidebar-divider">
+  <div class="version" id="version-ruangadmin"></div>
+</ul>
+{% endblock %}
+
+{% block content_block %}
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800">My Profile</h1>
+</div>
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+
+<div class="col">
+<div class="row">
+  <div class="col mb-3">
+    <div class="card">
+      <div class="card-body">
+        <div class="e-profile">
+          <div class="row">
+            <div class="col-12 col-sm-auto mb-3">
+              <div class="mx-auto" style="width: 140px;">
+                  <img src="{% static 'student/img/selfie.jpg' %}" width="100%" height="140px" alt="">
+                <!--div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
+                  <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;">140x140</span>
+                </div-->
+              </div>
+            </div>
+            <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
+              <div class="text-center text-sm-left mb-2 mb-sm-0">
+                <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">Houssam Mrabet</h4>
+                <p class="mb-0">SMI</p>
+                <div class="mt-2">
+                  <button class="btn btn-primary" type="button">
+                    <i class="fa fa-fw fa-camera"></i>
+                    <span>Change Picture</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-content pt-3">
+            <div class="tab-pane active">
+              <form class="form" novalidate="">
+                <div class="row">
+                  <div class="col">
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label>Full Name</label>
+                          <input class="form-control" type="text" name="name" value="">
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label>Username</label>
+                          <input class="form-control" type="text" name="username" value="">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label>Email</label>
+                          <input class="form-control" type="text" placeholder="user@example.com">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 col-sm-12 mb-3">
+                    <div class="mb-2"><b>Change Password</b></div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label>Current Password</label>
+                          <input class="form-control" type="password">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label>New Password</label>
+                          <input class="form-control" type="password">
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label>Confirm <span class="d-none d-xl-inline">Password</span></label>
+                          <input class="form-control" type="password"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col d-flex justify-content-end">
+                    <button class="btn btn-primary" type="submit">Save Changes</button>
+                  </div>
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+</div>
+{% endblock %}

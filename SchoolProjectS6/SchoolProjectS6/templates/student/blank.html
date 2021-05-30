@@ -1,0 +1,64 @@
+{% extends "student/base.html" %}
+{% load static %}
+
+{% block sidebar %}
+<ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <div class="sidebar-brand-icon">
+      Online Class
+    </div>
+    <div class="sidebar-brand-text mx-3"></div>
+  </a>
+  <hr class="sidebar-divider my-0">
+  <li class="nav-item">
+    <a class="nav-link" href="index.html">
+      <i class="fas fa-book"></i>
+      <span>My Courses</span></a>
+  </li>
+  <hr class="sidebar-divider">
+  <div class="sidebar-heading">
+    Actions
+  </div>
+  <li class="nav-item">
+    <a class="nav-link" href="Join_Course.html">
+      <i class="fas fa-plus-square"></i>
+      <span>Join Course</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="to_do.html">
+      <i class="fas fa-clipboard-check"></i>
+      <span>To do</span>
+    </a>
+  </li>
+  <hr class="sidebar-divider">
+  <div class="sidebar-heading">
+    Settings
+  </div>
+  <li class="nav-item">
+    <a class="nav-link" href="edit_profile.html">
+      <i class="fas fa-user-edit"></i>
+      <span>Edit Profile</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="javascript:void(0);" data-toggle="modal" data-target="#logoutModal">
+      <i class="fas fa-sign-out-alt"></i>
+      <span>Logout</span>
+    </a>
+  </li>
+  <hr class="sidebar-divider">
+  <div class="version" id="version-ruangadmin"></div>
+</ul>
+{% endblock %}
+
+{% block content_block %}
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+      <h1 class="h3 mb-0 text-gray-800">Blank Page</h1>
+    </div>
+
+    <div class="text-center">
+      <img src="{% static 'student/img/think.svg' %}" style="max-height: 90px">
+      <h4 class="pt-3">save your <b>imagination</b> here!</h4>
+    </div>
+{% endblock %}

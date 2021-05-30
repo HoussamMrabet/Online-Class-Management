@@ -1,0 +1,147 @@
+{% extends "student/base.html" %}
+{% load static %}
+
+{% block sidebar %}
+  <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <div class="sidebar-brand-icon">
+        Online Class
+      </div>
+      <div class="sidebar-brand-text mx-3"></div>
+    </a>
+    <hr class="sidebar-divider my-0">
+    <li class="nav-item active">
+      <a class="nav-link" href="index.html">
+        <i class="fas fa-book"></i>
+        <span>My Courses</span></a>
+    </li>
+    <hr class="sidebar-divider">
+    <div class="sidebar-heading">
+      Actions
+    </div>
+    <li class="nav-item">
+      <a class="nav-link" href="Join_Course.html">
+        <i class="fas fa-plus-square"></i>
+        <span>Join Course</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="to_do.html">
+        <i class="fas fa-clipboard-check"></i>
+        <span>To do</span>
+      </a>
+    </li>
+    <hr class="sidebar-divider">
+    <div class="sidebar-heading">
+      Settings
+    </div>
+    <li class="nav-item">
+      <a class="nav-link" href="edit_profile.html">
+        <i class="fas fa-user-edit"></i>
+        <span>Edit Profile</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="javascript:void(0);" data-toggle="modal" data-target="#logoutModal">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </a>
+    </li>
+    <hr class="sidebar-divider">
+    <div class="version" id="version-ruangadmin"></div>
+  </ul>
+{% endblock %}
+
+{% block content_block %}
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Programmation Orienté Objet</h1>
+    <h3 class="h5 mb-0 text-gray-800">SMI - Said Tkatek</h3>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12 mb-4">
+      <!-- Simple Tables -->
+      <div class="card">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary">Courses Files</h6>
+        </div>  
+        <div class="table-responsive">
+          <table class="table align-items-center table-flush">
+            <tbody>
+              <tr>
+                <td>POO</td>
+                <td style="text-align:right"><a href="#" class="btn btn-sm btn-primary">Download</a></td>
+              </tr>
+              <tr>
+                <td>Java</td>
+                <td style="text-align:right"><a href="#" class="btn btn-sm btn-primary">Download</a></td>
+              </tr>
+              <tr>
+                <td align="center" colspan="2">No course files yet !</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12 mb-4">
+      <!-- Simple Tables -->
+      <div class="card">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">TD Files</h6>
+        </div>  
+        <div class="table-responsive">
+          <table class="table align-items-center table-flush">
+            <tbody>
+              <tr>
+                <td>POO</td>
+                <td style="text-align:right"><a href="#" class="btn btn-sm btn-primary">Download</a></td>
+              </tr>
+              <tr>
+                <td>Java</td>
+                <td style="text-align:right"><a href="#" class="btn btn-sm btn-primary">Download</a></td>
+              </tr>
+              <tr>
+                <td align="center" colspan="5">No TD's yet !</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12 mb-4">
+      <!-- Simple Tables -->
+      <div class="card" style="margin: auto;">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">TP Files</h6>
+        </div>  
+        <div class="table-responsive">
+          <table class="table align-items-center table-flush">
+            <tbody>
+              <tr>
+                <td>POO</td>
+                <td style="text-align:right"><a href="#" class="btn btn-sm btn-primary">Download</a></td>
+              </tr>
+              <tr>
+                <td>Java</td>
+                <td style="text-align:right"><a href="#" class="btn btn-sm btn-primary">Download</a></td>
+              </tr>
+              <tr>
+                <td align="center" colspan="5">No TP's yet !</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer"></div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

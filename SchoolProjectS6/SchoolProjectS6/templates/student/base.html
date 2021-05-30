@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link href="img/logo/logo.png" rel="icon">
+  <title>Student Space</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link href="{% static 'student/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'student/css/ruang-admin.css' %}" rel="stylesheet">
+</head>
+
+<body id="page-top">
+  <div id="wrapper">
+    <!-- Sidebar -->
+    {% block sidebar %}
+    {% endblock %}
+    <!-- Sidebar -->
+    <div id="content-wrapper" class="d-flex flex-column">
+      <div id="content">
+        <!-- TopBar -->
+        <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
+          <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <img class="img-profile rounded-circle" src="{% static 'student/img/selfie.jpg' %}" style="max-width: 60px">
+                <span class="ml-2 d-none d-lg-inline text-white small">Houssam Mrabet</span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="edit_profile.html">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Profile
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="javascript:void(0);" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout
+                </a>
+              </div>
+            </li>
+          </ul>
+        </nav>
+        <!-- Topbar -->
+
+        <!-- Container Fluid-->
+        <div class="container-fluid" id="container-wrapper">
+        {% block content_block %}
+        {% endblock %}
+            <!-- Modal Logout -->
+            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabelLogout">Ohh No!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to logout?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
+                    <a href="login.html" class="btn btn-primary">Logout</a>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+    </div>
+    <footer class="sticky-footer bg-white">
+      <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+                <span>copyright © <script> document.write(new Date().getFullYear()); </script> - University ibn tofail
+          </span>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  <!-- Scroll to top -->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js" integrity="sha512-0QbL0ph8Tc8g5bLhfVzSqxe9GERORsKhIn1IrpxDAgUsbBGz/V7iSav2zzW325XGd1OMLdL4UiqRJj702IeqnQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="{% static 'student/js/ruang-admin.min.js' %}"></script>
+
+</body>
+
+</html>

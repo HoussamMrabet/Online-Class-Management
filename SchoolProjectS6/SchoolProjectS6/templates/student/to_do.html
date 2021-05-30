@@ -1,0 +1,101 @@
+{% extends "student/base.html" %}
+{% load static %}
+
+{% block sidebar %}
+<ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <div class="sidebar-brand-icon">
+      Online Class
+    </div>
+    <div class="sidebar-brand-text mx-3"></div>
+  </a>
+  <hr class="sidebar-divider my-0">
+  <li class="nav-item">
+    <a class="nav-link" href="index.html">
+      <i class="fas fa-book"></i>
+      <span>My Courses</span></a>
+  </li>
+  <hr class="sidebar-divider">
+  <div class="sidebar-heading">
+    Actions
+  </div>
+  <li class="nav-item">
+    <a class="nav-link" href="Join_Course.html">
+      <i class="fas fa-plus-square"></i>
+      <span>Join Course</span>
+    </a>
+  </li>
+  <li class="nav-item active">
+    <a class="nav-link" href="to_do.html">
+      <i class="fas fa-clipboard-check"></i>
+      <span>To do</span>
+    </a>
+  </li>
+  <hr class="sidebar-divider">
+  <div class="sidebar-heading">
+    Settings
+  </div>
+  <li class="nav-item">
+    <a class="nav-link" href="edit_profile.html">
+      <i class="fas fa-user-edit"></i>
+      <span>Edit Profile</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="javascript:void(0);" data-toggle="modal" data-target="#logoutModal">
+      <i class="fas fa-sign-out-alt"></i>
+      <span>Logout</span>
+    </a>
+  </li>
+  <hr class="sidebar-divider">
+  <div class="version" id="version-ruangadmin"></div>
+</ul>
+{% endblock %}
+
+{% block content_block %}
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800">Reports List</h1>
+</div>
+
+<div class="row">
+  <div class="col-lg-12 mb-4">
+    <!-- Simple Tables -->
+    <div class="card">
+      <div class="table-responsive">
+        <table class="table align-items-center table-flush">
+          <thead class="thead-light">
+            <tr>
+              <th></th>
+              <th>Teacher</th>
+              <th>Module</th>
+              <th>Download</th>
+              <th>Return</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="#">RA0449</a></td>
+              <td>Said Tkatek</td>
+              <td>POO</td>
+              <td><a href="#" class="btn btn-sm btn-primary">Download</a></td>
+              <td><a href="#" class="btn btn-sm btn-success">Upload</a></td>
+            </tr>
+            <tr>
+              <td><a href="#">RA5324</a></td>
+              <td>bla bla</td>
+              <td>Java</td>
+              <td><a href="#" class="btn btn-sm btn-primary">Download</a></td>
+              <td><a href="#" class="btn btn-sm btn-success">Upload</a></td>
+            </tr>
+            <tr>
+              <td align="center" colspan="5">No reports yet !</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card-footer"></div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,62 @@
+{% extends "student/base.html" %}
+{% load static %}
+
+{% block sidebar %}
+  <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <div class="sidebar-brand-icon">
+        Online Class
+      </div>
+      <div class="sidebar-brand-text mx-3"></div>
+    </a>
+    <hr class="sidebar-divider my-0">
+    <li class="nav-item">
+      <a class="nav-link" href="index.html">
+        <i class="fas fa-book"></i>
+        <span>My Courses</span></a>
+    </li>
+    <hr class="sidebar-divider">
+    <div class="sidebar-heading">
+      Actions
+    </div>
+    <li class="nav-item">
+      <a class="nav-link" href="Join_Course.html">
+        <i class="fas fa-plus-square"></i>
+        <span>Join Course</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="to_do.html">
+        <i class="fas fa-clipboard-check"></i>
+        <span>To do</span>
+      </a>
+    </li>
+    <hr class="sidebar-divider">
+    <div class="sidebar-heading">
+      Settings
+    </div>
+    <li class="nav-item">
+      <a class="nav-link" href="edit_profile.html">
+        <i class="fas fa-user-edit"></i>
+        <span>Edit Profile</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="javascript:void(0);" data-toggle="modal" data-target="#logoutModal">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </a>
+    </li>
+    <hr class="sidebar-divider">
+    <div class="version" id="version-ruangadmin"></div>
+  </ul>
+{% endblock %}
+
+{% block content_block %}
+      <div class="text-center">
+        <img src="{% static 'student/img/error.svg' %}" style="max-height: 100px;" class="mb-3">
+        <h3 class="text-gray-800 font-weight-bold">Oopss!</h3>
+        <p class="lead text-gray-800 mx-auto">404 Page Not Found</p>
+        <a href="index.html">&larr; Back to Dashboard</a>
+      </div>
+{% endblock %}

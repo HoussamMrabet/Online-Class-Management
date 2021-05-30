@@ -1,0 +1,159 @@
+{% extends "student/base.html" %}
+{% load static %}
+
+{% block sidebar %}
+<ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <div class="sidebar-brand-icon">
+      Online Class
+    </div>
+    <div class="sidebar-brand-text mx-3"></div>
+  </a>
+  <hr class="sidebar-divider my-0">
+  <li class="nav-item active">
+    <a class="nav-link" href="index.html">
+      <i class="fas fa-book"></i>
+      <span>My Courses</span></a>
+  </li>
+  <hr class="sidebar-divider">
+  <div class="sidebar-heading">
+    Actions
+  </div>
+  <li class="nav-item">
+    <a class="nav-link" href="Join_Course.html">
+      <i class="fas fa-plus-square"></i>
+      <span>Join Course</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="to_do.html">
+      <i class="fas fa-clipboard-check"></i>
+      <span>To do</span>
+    </a>
+  </li>
+  <hr class="sidebar-divider">
+  <div class="sidebar-heading">
+    Settings
+  </div>
+  <li class="nav-item">
+    <a class="nav-link" href="edit_profile.html">
+      <i class="fas fa-user-edit"></i>
+      <span>Edit Profile</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="javascript:void(0);" data-toggle="modal" data-target="#logoutModal">
+      <i class="fas fa-sign-out-alt"></i>
+      <span>Logout</span>
+    </a>
+  </li>
+  <hr class="sidebar-divider">
+  <div class="version" id="version-ruangadmin"></div>
+</ul>
+{% endblock %}
+
+{% block content_block %}
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800">My Courses</h1>
+</div>
+
+<div class="row mb-3">
+
+  <a  href="Join_Course.html" class="col-xl-3 col-md-6 mb-4 text-gray-800">
+    <div class="card index_card h-100">
+      <div style="margin: auto;">
+        <i class="fas fa-plus fa-5x"></i>
+      </div>
+    </div>
+  </a>
+
+  <a href="course.html" class="col-xl-3 col-md-6 mb-4">
+    <div class="card index_card h-100">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="h5 mb-0 font-weight-bold text-gray-800">Programmation Orienté Objet</div>
+            <div class=" mb-1 text-muted">SMI S4 2020_2021</div>
+            <div class="mt-2 mb-0 text-muted text-xs">Said Tkatek</div>
+            <div class="mt-2 mb-0 text-xs leave-course">Leave this course</div>
+          </div>
+          <div class="col-auto" style="align-self: flex-start;">
+            <img class="img-profile rounded-circle" src="{% static 'student/img/tkatk.PNG' %}" width="58px" height="58px" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </a>
+
+  <a href="course.html" class="col-xl-3 col-md-6 mb-4">
+    <div class="card index_card h-100">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="h5 mb-0 font-weight-bold text-gray-800">Programmation Orienté Objet</div>
+            <div class=" mb-1 text-muted">SMI S4 2020_2021</div>
+            <div class="mt-2 mb-0 text-muted text-xs">Said Tkatek</div>
+            <div class="mt-2 mb-0 text-xs leave-course">Leave this course</div>
+          </div>
+          <div class="col-auto" style="align-self: flex-start;">
+            <img class="img-profile rounded-circle" src="{% static 'student/img/tkatk.PNG' %}" width="58px" height="58px" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </a>
+
+  <a href="course.html" class="col-xl-3 col-md-6 mb-4">
+    <div class="card index_card h-100">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="h5 mb-0 font-weight-bold text-gray-800">Programmation Orienté Objet</div>
+            <div class=" mb-1 text-muted">SMI S4 2020_2021</div>
+            <div class="mt-2 mb-0 text-muted text-xs">Said Tkatek</div>
+            <div class="mt-2 mb-0 text-xs leave-course">Leave this course</div>
+          </div>
+          <div class="col-auto" style="align-self: flex-start;">
+            <img class="img-profile rounded-circle" src="{% static 'student/img/tkatk.PNG' %}" width="58px" height="58px" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </a>
+
+  <a href="course.html" class="col-xl-3 col-md-6 mb-4">
+    <div class="card index_card h-100">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="h5 mb-0 font-weight-bold text-gray-800">Programmation Orienté Objet</div>
+            <div class=" mb-1 text-muted">SMI S4 2020_2021</div>
+            <div class="mt-2 mb-0 text-muted text-xs">Said Tkatek</div>
+            <div class="mt-2 mb-0 text-xs leave-course">Leave this course</div>
+          </div>
+          <div class="col-auto" style="align-self: flex-start;">
+            <img class="img-profile rounded-circle" src="{% static 'student/img/tkatk.PNG' %}" width="58px" height="58px" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </a>
+
+  <a href="course.html" class="col-xl-3 col-md-6 mb-4">
+    <div class="card index_card h-100">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="h5 mb-0 font-weight-bold text-gray-800">Programmation Orienté Objet</div>
+            <div class=" mb-1 text-muted">SMI S4 2020_2021</div>
+            <div class="mt-2 mb-0 text-muted text-xs">Said Tkatek</div>
+            <div class="mt-2 mb-0 text-xs leave-course">Leave this course</div>
+          </div>
+          <div class="col-auto" style="align-self: flex-start;">
+            <img class="img-profile rounded-circle" src="{% static 'student/img/tkatk.PNG' %}" width="58px" height="58px" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </a>
+  {% endblock %}
