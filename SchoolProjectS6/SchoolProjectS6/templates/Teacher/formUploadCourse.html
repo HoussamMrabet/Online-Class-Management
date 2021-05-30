@@ -1,0 +1,64 @@
+
+{% block title %}
+<title>Upload courses</title>
+{% endblock %} 
+{% block content %}
+          <div class="row" >
+            <div class="col-lg-6" style="margin-left : 20%;">
+              <!-- Form Basic -->
+              <div class="card mb-4" >
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Upload a course</h6>
+                </div>
+                <div class="card-body" >
+                  <form method="POST" action="">
+                
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">The course description</label>
+					  <textarea name="desc" class="form-control" id="exampleInputPassword1" placeholder="Description" rows="4"></textarea>
+                   
+                    </div>
+				
+                 <div class="form-group">
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="customFile" name="fileC">
+                        <label class="custom-file-label" for="customFile">Choose file</label>
+                      </div>
+                    </div> 
+                <div class="form-group">
+                    <label for="select2SinglePlaceholder">Which course you would like to add this lesson</label>
+                    <select class="select2-single-placeholder form-control" name="state" id="select2SinglePlaceholder">
+                      <option value="">Select</option>
+                      <option value="Maluku Utara">Maluku Utara</option>
+                      <option value="Papua Barat">Papua Barat</option>
+                      <option value="Papua">Papua</option>
+                    </select>
+                  </div>
+                    <input type="submit" class="btn btn-primary" value="Upload" name="send">
+					<input type="reset" value="Clear" id="clear" class="btn btn-default">
+                  </form>
+                </div>
+              </div>
+
+            
+
+            </div>
+
+            <div class="col-lg-6">
+            
+
+            </div>
+          </div>
+  {% endblock %}
+  {% block jsCode %}       
+ <script>
+            $('#customFile').on('change',function(){
+                //get the file name
+                var fileName = $(this).val().replace('C:\\fakepath\\', " ");
+                //replace the "Choose a file" label
+                $(this).next('.custom-file-label').html(fileName);	
+            })
+		
+  </script>
+
+  {% endblock %} 

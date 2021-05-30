@@ -1,0 +1,50 @@
+
+{% block title %}
+<title>Add courses</title>
+{% endblock %} 
+
+{% block content %}
+          <div class="row" >
+            <div class="col-lg-6" style="margin-left : 20%;">
+              <!-- Form Basic -->
+              <div class="card mb-4" >
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Add a course</h6>
+                </div>
+                <div class="card-body" >
+                  <form method="POST" action="">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Title </label>
+                      <input type="text" class="form-control" name="titleC" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="Course name">
+    
+                    </div>
+					 <div class="form-group">
+                      <label for="exampleInputEmail1">Level </label>
+                      <input type="text" class="form-control" name="titleC" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="example : SMI S2">
+    
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Code</label>
+                      <input type="text" class="form-control" id="exampleInputPassword1" name="codeC" placeholder="Code for your course">
+                    </div>
+					  
+        
+                
+                    <input type="submit" class="btn btn-primary" value="Add" name="send">
+					<input type="reset" value="Clear" name="clear" class="btn btn-default">
+                  </form>
+                </div>
+              </div>
+
+             
+
+            </div>
+
+            <div class="col-lg-6">
+            
+
+            </div>
+          </div>
+{% endblock %}

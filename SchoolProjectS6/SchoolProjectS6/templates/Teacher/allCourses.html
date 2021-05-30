@@ -1,0 +1,57 @@
+
+{% block title %}
+<title>Courses</title>
+<style>
+  .card {
+cursor: pointer;
+transition: all 0.5s;
+}
+
+.card:hover {
+transform: scale(1.05);
+}
+</style>
+{% endblock %}
+
+{% block content %}
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Courses</h1>
+          </div>
+
+          <div class="row mb-3">
+            <!-- Earnings (Monthly) Card Example -->
+           <div class="col-xl-3 col-md-6 mb-4">
+             <div class="card h-100">
+                <div style="margin: auto;">
+				 <a href="formAddCourse.html"> 
+                  <i class="fas fa-plus fa-5x"></i>
+				  </a>
+                </div>
+              </div>
+            </div> 
+            <!-- Earnings (Annual) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+					<a href="courseDetails.html">
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">Programmation Oriente Objet</div>
+                      <div class=" mb-1">SMI S4 2020_2021</div>
+					   </a>
+                     <a href=""> <div class="mt-2 mb-0 text-muted text-xs">Remove this course</div></a>
+					 
+                    </div>
+                    <div class="col-auto" style="align-self: flex-start;">
+                      <img class="img-profile rounded-circle" src="img/logo/man.jpg" width="58px" height="58px" alt="">
+					  <div class="mt-2 mb-0 text-muted text-xs">Said Tkatek</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+           
+           
+          </div>
+{% endblock %}
+         
