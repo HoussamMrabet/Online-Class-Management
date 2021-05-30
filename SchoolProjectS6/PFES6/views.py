@@ -4,6 +4,7 @@ from .models import Users
 from .forms import UsersForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User,auth
 
 # Create your views here.
 
@@ -36,7 +37,7 @@ def user_login(request):
         email = request.POST.get('email')
         password = request.POST.get('password')
       
-        user = authenticate(email=email, password=password)
+        user = auth.authenticate(email=email, password=password)
 
         if user is not None:
             login(request, user)
