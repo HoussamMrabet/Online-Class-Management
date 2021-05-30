@@ -160,19 +160,25 @@
     <div class="popup-container">
         <label class="close-btn fas fa-times" onclick="closeForm()"></label>
         <div class="text">Login</div>
-        <form action="#" method="POST">
-            <div class="data">
-                <label>Email</label>
-                <input type="text" name="email" placeholder = "Enter your email address" required>
-            </div>
-            <div class="data">
-                <label>Password</label>
-                <input type="password" name="psw" placeholder="Enter password" required>
-            </div>
+<<<<<<< HEAD
+        
+=======
+>>>>>>> 83f27afee888c4afde06d3493f85a085b76a5d2e
+            
+<form action="{% url 'PFES6:login' %}" method="POST">
+    {% csrf_token %}
+    <div class="data">
+        <label>Email</label>
+        <input type="email" name="email" required>
+    </div>
+    <div class="data">
+        <label>Password</label>
+        <input type="password" name="password" required>
+</div>
         
             <div class="btn-p">
                 <div class="inner"></div>
-                <button type="submit">Login</button>
+                <button type="submit" value="login">Login</button>
             </div>
         </form>
     </div>
