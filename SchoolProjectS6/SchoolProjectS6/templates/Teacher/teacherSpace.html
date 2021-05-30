@@ -1,5 +1,5 @@
 {% extends "Teacher/base.html" %}
-        
+{% load static %}
 {% block content %}   
           <div class="row ">
             <div class="col-xl-6 col-md-6 mb-4">
@@ -150,6 +150,6 @@
 {% endblock %}     
 
       {% block jsLinks %}
-      <script src="{% static 'teacherDesig/vendor/chart.js/Chart.min.js' %}"></script>
-      <script src="{% static 'teacherDesig/js/demo/chart-area-demo.js' %}"></script>
+      <script src="{% static 'teacherDesign/vendor/chart.js/Chart.min.js' %}"></script>
+      <script src="{% static 'teacherDesign/js/demo/chart-area-demo.js' %}"></script>
       {% endblock %}
