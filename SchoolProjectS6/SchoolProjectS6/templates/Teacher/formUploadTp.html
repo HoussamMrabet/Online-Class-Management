@@ -1,7 +1,5 @@
 {% extends "Teacher/base.html" %}
-{% block title %}
-<title>Upload TP</title>
-{% endblock %} 
+ 
 
         
       {% block content %}
@@ -53,14 +51,4 @@
           </div>
  {% endblock %}
     
-  {% block jsCode %}
- <script>
-            $('#customFile').on('change',function(){
-                //get the file name
-                var fileName = $(this).val().replace('C:\\fakepath\\', " ");
-                //replace the "Choose a file" label
-                $(this).next('.custom-file-label').html(fileName);	
-            })
   
-  </script>
-{% endblock %}

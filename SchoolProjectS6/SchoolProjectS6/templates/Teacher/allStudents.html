@@ -1,7 +1,7 @@
+{% load static %}
+
 {% extends "Teacher/base.html" %}
-{% block title %}
-<title>Your Students</title>
-{% endblock %} 
+
 
 
         {% block content %}
@@ -108,14 +108,7 @@
 
    
   {% block jsLinks %}
-  <script src="{% static 'vendor/datatables/jquery.dataTables.min.js' %}"></script>
-  <script src="{% static 'vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
+  <script src="{% static 'teacherDesign/vendor/datatables/jquery.dataTables.min.js' %}"></script>
+  <script src="{% static 'teacherDesign/vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
   {% endblock %}
-  {% block jsCode %}
-<script>
-    $(document).ready(function () {
-      $('#dataTable').DataTable(); // ID From dataTable 
-      $('#dataTableHover').DataTable(); // ID From dataTable with Hover
-    });
-  </script>
-  {% endblock %}
+  

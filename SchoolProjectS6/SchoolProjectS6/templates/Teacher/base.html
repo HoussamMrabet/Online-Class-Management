@@ -1,5 +1,6 @@
-<!DOCTYPE html>
 {% load static %}
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,12 +10,20 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <link href="teacherDesign/img/logo/logoIBNTOFAIL.jpg" rel="icon">
+  <title>Teacher space</title>
   <link href="{% static 'teacherDesign/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
   <link href="{% static 'teacherDesign/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
   <link href="{% static 'teacherDesign/css/ruang-admin.min.css' %}" rel="stylesheet">
-  {% block title %}
-
-  {% endblock %}
+  <style>
+    .card {
+  cursor: pointer;
+  transition: all 0.5s;
+  }
+  
+  .card:hover {
+  transform: scale(1.05);
+  }
+  </style>
 </head>
 
 <body id="page-top">
@@ -145,7 +154,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
-                  <a href="PFES6/logout" class="btn btn-primary">Logout</a>
+                  <a href="{% url 'PFES6:logout' %}" class="btn btn-primary">Logout</a>
                 </div>
               </div>
             </div>
@@ -179,9 +188,12 @@
   {% block jsLinks %}
   
       {% endblock %}  
-      {% block jsCode %}
-
-{% endblock %}
+      <script>
+        $(document).ready(function () {
+          $('#dataTable').DataTable(); // ID From dataTable 
+          $('#dataTableHover').DataTable(); // ID From dataTable with Hover
+        });
+      </script>
         
 	
 </body>
