@@ -12,6 +12,23 @@ def student_index(request):
     return render(request, 'student/index.html')
 
 
+def student_join_course(request):
+    return render(request, 'student/join_course.html')
+
+
+def student_to_do(request):
+    return render(request, 'student/to_do.html')
+
+
+def student_profile(request):
+    if request.method == 'GET':
+        id = request.GET.get('userId')
+        user = Users.objects.get(id=id)
+        return render(request, 'student/edit_profile.html', {'user': user})
+    else:
+        return render(request, 'student/edit_profile.html')
+
+
 def teacher_index(request):
     return render(request, 'Teacher/teacherSpace.html')
 

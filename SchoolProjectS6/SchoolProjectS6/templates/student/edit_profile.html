@@ -11,7 +11,7 @@
   </a>
   <hr class="sidebar-divider my-0">
   <li class="nav-item">
-    <a class="nav-link" href="index.html">
+    <a class="nav-link" href="{% url 'PFES6:student' %}">
       <i class="fas fa-book"></i>
       <span>My Courses</span></a>
   </li>
@@ -20,13 +20,13 @@
     Actions
   </div>
   <li class="nav-item">
-    <a class="nav-link" href="Join_Course.html">
+    <a class="nav-link" href="{% url 'PFES6:student_join_course' %}">
       <i class="fas fa-plus-square"></i>
       <span>Join Course</span>
     </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="to_do.html">
+    <a class="nav-link" href="{% url 'PFES6:student_to_do' %}">
       <i class="fas fa-clipboard-check"></i>
       <span>To do</span>
     </a>
@@ -36,7 +36,7 @@
     Settings
   </div>
   <li class="nav-item active">
-    <a class="nav-link" href="edit_profile.html">
+    <a class="nav-link" href="{% url 'PFES6:student_profile' %}">
       <i class="fas fa-user-edit"></i>
       <span>Edit Profile</span>
     </a>
@@ -68,7 +68,7 @@
           <div class="row">
             <div class="col-12 col-sm-auto mb-3">
               <div class="mx-auto" style="width: 140px;">
-                  <img src="{% static 'student/img/selfie.jpg' %}" width="100%" height="140px" alt="">
+                  <img src="{{ user.picture.url }}" width="100%" height="140px" alt="">
                 <!--div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
                   <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;">140x140</span>
                 </div-->
@@ -76,7 +76,7 @@
             </div>
             <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
               <div class="text-center text-sm-left mb-2 mb-sm-0">
-                <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">Houssam Mrabet</h4>
+                <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{user.prenom}} {{user.nom}}</h4>
                 <p class="mb-0">SMI</p>
                 <div class="mt-2">
                   <button class="btn btn-primary" type="button">

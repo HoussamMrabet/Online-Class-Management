@@ -11,7 +11,7 @@
   </a>
   <hr class="sidebar-divider my-0">
   <li class="nav-item">
-    <a class="nav-link" href="index.html">
+    <a class="nav-link" href="{% url 'PFES6:student' %}">
       <i class="fas fa-book"></i>
       <span>My Courses</span></a>
   </li>
@@ -20,13 +20,13 @@
     Actions
   </div>
   <li class="nav-item">
-    <a class="nav-link" href="Join_Course.html">
+    <a class="nav-link" href="{% url 'PFES6:student_join_course' %}">
       <i class="fas fa-plus-square"></i>
       <span>Join Course</span>
     </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="to_do.html">
+    <a class="nav-link" href="{% url 'PFES6:student_to_do' %}">
       <i class="fas fa-clipboard-check"></i>
       <span>To do</span>
     </a>
@@ -36,7 +36,7 @@
     Settings
   </div>
   <li class="nav-item">
-    <a class="nav-link" href="edit_profile.html">
+    <a class="nav-link" href="{% url 'PFES6:student_profile' %}">
       <i class="fas fa-user-edit"></i>
       <span>Edit Profile</span>
     </a>
