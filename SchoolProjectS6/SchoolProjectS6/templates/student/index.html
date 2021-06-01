@@ -1,6 +1,10 @@
 {% extends "student/base.html" %}
 {% load static %}
 
+{% block title %}
+  <title>My Courses</title>
+{% endblock %}
+
 {% block sidebar %}
 <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
   <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'PFES6:student' %}?userId={{user.id}}">
@@ -61,8 +65,12 @@
 
   <a  href="{% url 'PFES6:student_join_course' %}?userId={{user.id}}" class="col-xl-3 col-md-6 mb-4 text-gray-800">
     <div class="card index_card h-100">
-      <div style="margin: auto;">
-        <i class="fas fa-plus fa-5x"></i>
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div style="margin: 1rem auto;">
+            <i class="fas fa-plus fa-5x"></i>
+          </div>
+        </div>
       </div>
     </div>
   </a>

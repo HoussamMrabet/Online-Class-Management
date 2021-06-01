@@ -1,6 +1,10 @@
 {% extends "student/base.html" %}
 {% load static %}
 
+{% block title %}
+  <title>Profile</title>
+{% endblock %}
+
 {% block sidebar %}
 <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
   <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'PFES6:student' %}?userId={{user.id}}">
@@ -126,27 +130,63 @@
                 <div class="row">
                   <div class="col-12 col-sm-12 mb-3">
                     <div class="mb-2"><b>Change Password</b></div>
+
+                    <!-- Current password -->
+                    {% if p is none %}
                     <div class="row">
                       <div class="col">
                         <div class="form-group">
                           <label>Current Password</label>
-                          <input class="form-control" name="oldpass" type="password" required>
+                          <input class="form-control" name="oldpass" type="password">
                         </div>
                       </div>
                     </div>
+                    {% else %}
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label>Current Password</label>
+                          <input class="form-control is-invalid" name="oldpass" type="password">
+                          <div class="invalid-feedback">
+                            Please provide the correct password.
+                          </div>                  
+                        </div>
+                      </div>
+                    </div>
+                    {% endif %}
+                    <!-- New Password -->
+                    {% if np is none %}
                     <div class="row">
                       <div class="col">
                         <div class="form-group">
                           <label>New Password</label>
-                          <input class="form-control" name="newpass" type="password" required>
+                          <input class="form-control" name="newpass" type="password">
                         </div>
                       </div>
                       <div class="col">
                         <div class="form-group">
                           <label>Confirm <span class="d-none d-xl-inline">Password</span></label>
-                          <input class="form-control" name="newpass2" type="password" required></div>
+                          <input class="form-control" name="newpass2" type="password"></div>
                       </div>
                     </div>
+                    {% else %}
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label>New Password</label>
+                          <input class="form-control is-invalid" name="newpass" type="password">
+                          <div class="invalid-feedback">
+                            Passwords are not the same.
+                          </div>                  
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label>Confirm <span class="d-none d-xl-inline">Password</span></label>
+                          <input class="form-control is-invalid" name="newpass2" type="password"></div>
+                      </div>
+                    </div>
+                    {% endif %}
                   </div>
                 </div>
                 <div class="row">

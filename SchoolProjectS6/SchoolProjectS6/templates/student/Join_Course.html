@@ -1,6 +1,10 @@
 {% extends "student/base.html" %}
 {% load static %}
 
+{% block title %}
+  <title>Join New Course</title>
+{% endblock %}
+
 {% block sidebar %}
 <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
   <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'PFES6:student' %}?userId={{user.id}}">
@@ -66,16 +70,25 @@
       {% csrf_token %}
       <input type="text" name="userId" value="{{user.id}}" hidden>
       <div class="form-group">
-        
+        {% if c is none and x is none %}
         <label for="validationServer01">Course Code</label>
         <input type="text" class="form-control" id="validationServer01"
         placeholder="Code" name="codeC" required>
-
-        <!--input type="text" class="form-control is-invalid" id="validationServer01"
-        placeholder="Code" value="" required>
-        <div class="invalid-feedback">
-          Please provide a valid code.
-        </div-->
+        {% else %}
+          {% if c%}
+            <input type="text" class="form-control is-invalid" id="validationServer01"
+            placeholder="Code" name="codeC" required>
+            <div class="invalid-feedback">
+              Please provide a valid code.
+            </div>
+          {% else %}
+            <input type="text" class="form-control is-invalid" id="validationServer01"
+            placeholder="Code" name="codeC" required>
+            <div class="invalid-feedback">
+              You already joined this course.
+            </div>
+          {% endif %}
+        {% endif %}
       </div>
       <input type="submit" value="Join" class="btn btn-primary">
     </form>

@@ -1,6 +1,10 @@
 {% extends "student/base.html" %}
 {% load static %}
 
+{% block title %}
+  <title>To Do</title>
+{% endblock %}
+
 {% block sidebar %}
 <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
   <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'PFES6:student' %}?userId={{user.id}}">

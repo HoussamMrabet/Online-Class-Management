@@ -12,7 +12,7 @@ def student_index(request):
     if request.method == 'GET':
         id = request.GET.get('userId')
         user = Users.objects.get(id=id)
-        classIns = JoinClass.objects.filter(usersId=user)
+        classIns = JoinClass.objects.filter(userId=user)
         return render(request, 'student/index.html', {'user': user, 'join': classIns})
     else:
         return render(request, 'student/index.html')
@@ -41,17 +41,23 @@ def student_join_course(request):
     elif request.method == 'POST':
         userId = request.POST.get('userId')
         code = request.POST.get('codeC')
-        classe = classSubject.objects.get(codeClasse=code)
         user = Users.objects.get(id=userId)
-        userTId = classe.userId.id
-        userT = Users.objects.get(id=userTId)
-        courj = JoinClass(usersId=user, classId=classe)
-        courj.save()
-        cours = course.objects.filter(course=classe)
-        td = TD.objects.filter(course=classe)
-        tp = TP.objects.filter(course=classe)
-        corr = correction_TD_TP.objects.filter(course=classe)
-        return render(request, 'student/course.html', {'user': user, 'userT': userT, 'class': classe, 'course': cours, 'td': td, 'tp': tp, 'corr': corr})
+        if classSubject.objects.filter(codeClasse=code).count() > 0:
+            classe = classSubject.objects.get(codeClasse=code)
+            userTId = classe.userId.id
+            userT = Users.objects.get(id=userTId)
+            if JoinClass.objects.filter(userId=user, classId=classe).count() > 0:
+                return render(request, 'student/join_course.html', {'user': user, 'x': True})
+            else:
+                courj = JoinClass(userId=user, classId=classe)
+                courj.save()
+                cours = course.objects.filter(course=classe)
+                td = TD.objects.filter(course=classe)
+                tp = TP.objects.filter(course=classe)
+                corr = correction_TD_TP.objects.filter(course=classe)
+                return render(request, 'student/course.html', {'user': user, 'userT': userT, 'class': classe, 'course': cours, 'td': td, 'tp': tp, 'corr': corr})
+        else:
+            return render(request, 'student/join_course.html', {'user': user, 'c': True})
     else:
         return render(request, 'student/join_course.html')
 
@@ -99,15 +105,34 @@ def student_edit_profile(request):
         nom = request.POST.get('nom')
         prenom = request.POST.get('prenom')
         email = request.POST.get('email')
+        opassword = request.POST.get('oldpass')
         password = request.POST.get('newpass')
+        cpassword = request.POST.get('newpass2')
         user = Users.objects.get(id=id)
-        picture = user.picture.name
-        role = user.role
-        userUp = Users(id=id, nom=nom, prenom=prenom,
-                       email=email, password=password, picture=picture, role=role)
-        userUp.save()
-        user = Users.objects.get(id=id)
-        return render(request, 'student/edit_profile.html', {'user': user})
+        if opassword != "":
+            if user.password != opassword:
+                p = True
+                return render(request, 'student/edit_profile.html', {'user': user, 'p': p})
+            else:
+                if password != cpassword:
+                    np = True
+                    return render(request, 'student/edit_profile.html', {'user': user, 'np': np})
+                else:
+                    picture = user.picture.name
+                    role = user.role
+                    userUp = Users(id=id, nom=nom, prenom=prenom,
+                                   email=email, password=password, picture=picture, role=role)
+                    userUp.save()
+                    user = Users.objects.get(id=id)
+                    return render(request, 'student/edit_profile.html', {'user': user})
+        else:
+            picture = user.picture.name
+            role = user.role
+            userUp = Users(id=id, nom=nom, prenom=prenom,
+                           email=email, password=user.password, picture=picture, role=role)
+            userUp.save()
+            user = Users.objects.get(id=id)
+            return render(request, 'student/edit_profile.html', {'user': user})
     else:
         return render(request, 'student/edit_profile.html')
 
@@ -126,14 +151,18 @@ def user_login(request):
         email = request.POST.get('email')
         password = request.POST.get('password')
 
-        user = Users.objects.get(email=email)
+        userf = Users.objects.filter(email=email)
 
-        if user is not None and password == user.password:
-            classIns = JoinClass.objects.filter(usersId=user)
-            if user.role == 's':
-                return render(request, 'student/index.html', {'user': user, 'join': classIns})
+        if userf.count() > 0:
+            user = Users.objects.get(email=email)
+            if password == user.password:
+                classIns = JoinClass.objects.filter(userId=user)
+                if user.role == 's':
+                    return render(request, 'student/index.html', {'user': user, 'join': classIns})
+                else:
+                    return render(request, 'teacher/teacherSpace.html', {'user': user})
             else:
-                return render(request, 'teacher/teacherSpace.html', {'user': user})
+                return render(request, 'index.html')
         else:
             return render(request, 'index.html')
     else:
@@ -146,5 +175,5 @@ def destroy(request):
     join = JoinClass.objects.get(id=id)
     join.delete()
     user = Users.objects.get(id=userId)
-    classIns = JoinClass.objects.filter(usersId=user)
+    classIns = JoinClass.objects.filter(userId=user)
     return render(request, 'student/index.html', {'user': user, 'join': classIns})

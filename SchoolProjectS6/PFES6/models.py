@@ -25,14 +25,14 @@ class Users(models.Model):
 class classSubject (models.Model):
     titleClass = models.CharField(max_length=50)
     level = models.CharField(max_length=50)
-    codeClasse = models.IntegerField()
+    codeClasse = models.CharField(max_length=10)
     creationDateClasse = models.DateField()
     userId = models.ForeignKey(Users, on_delete=models.CASCADE)
 
 
 class JoinClass(models.Model):
     classId = models.ForeignKey(classSubject, on_delete=models.CASCADE)
-    usersId = models.ForeignKey(Users, on_delete=models.CASCADE)
+    userId = models.ForeignKey(Users, on_delete=models.CASCADE)
 
 
 class course (models.Model):

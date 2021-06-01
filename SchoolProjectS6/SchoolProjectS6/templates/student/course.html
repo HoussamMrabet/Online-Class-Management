@@ -1,6 +1,10 @@
 {% extends "student/base.html" %}
 {% load static %}
 
+{% block title %}
+  <title>Course - {{ class.titleClass }}</title>
+{% endblock %}
+
 {% block sidebar %}
   <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'PFES6:student' %}?userId={{user.id}}">
@@ -175,27 +179,16 @@
       <!-- Todo Tables -->
       <div class="card">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-          <h6 class="m-0 font-weight-bold text-primary">TP Files</h6>
+          <h6 class="m-0 font-weight-bold text-primary">Homeworks</h6>
         </div>  
         <div class="table-responsive">
           <table class="table align-items-center table-flush">
-            <thead class="thead-light">
-              <tr>
-                <th></th>
-                <th>Teacher</th>
-                <th>Module</th>
-                <th>Download</th>
-                <th>Return</th>
-              </tr>
-            </thead>
             <tbody>
               {% for t in todo %}
               <tr>
-                <td><a href="#">RA0449</a></td>
-                <td>Prof{{ t.course.userId.prenom }} {{ t.course.userId.prenom }}</td>
-                <td>{{ t.course.titleClass}}</td>
-                <td><a href="{{ c.todoTFile.url }}" class="btn btn-sm btn-primary">Download</a></td>
-                <td><a href="#" class="btn btn-sm btn-success">Put your report</a></td>
+                <td><a href="#">{{ t.title }}</a></td>
+                <td style="text-align:center"><a href="{{ t.todoTFile.url }}" class="btn btn-sm btn-primary">Download</a></td>
+                <td style="text-align:right"><a href="#" class="btn btn-sm btn-success">Put your report</a></td>
               </tr>
               {% empty %}
               <tr>
