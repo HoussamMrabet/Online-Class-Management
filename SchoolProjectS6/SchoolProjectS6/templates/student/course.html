@@ -71,7 +71,7 @@
               {% for c in course %}
               <tr>
                 <td>{{c.course.titleClass}}</td>
-                <td style="text-align:right"><a href="#" class="btn btn-sm btn-primary">Download</a></td>
+                <td style="text-align:right"><a href="{{ c.courseFile.url }}" class="btn btn-sm btn-primary">Download</a></td>
               </tr>
               {% empty %}
               <tr>
@@ -99,7 +99,7 @@
               {% for d in TD %}
               <tr>
                 <td>{{d.titleTd}}</td>
-                <td style="text-align:right"><a href="#" class="btn btn-sm btn-primary">Download</a></td>
+                <td style="text-align:right"><a href="{{ c.tdFile.url }}" class="btn btn-sm btn-primary">Download</a></td>
               </tr>
               {% empty %}
               <tr>
@@ -127,7 +127,7 @@
               {% for p in TP %}
               <tr>
                 <td>{{p.titleTp}}</td>
-                <td style="text-align:right"><a href="#" class="btn btn-sm btn-primary">Download</a></td>
+                <td style="text-align:right"><a href="{{ c.tpFile.url }}" class="btn btn-sm btn-primary">Download</a></td>
               </tr>
               {% empty %}
               <tr>
@@ -155,7 +155,7 @@
               {% for co in corr %}
               <tr>
                 <td>{{co.title}}</td>
-                <td style="text-align:right"><a href="#" class="btn btn-sm btn-primary">Download</a></td>
+                <td style="text-align:right"><a href="{{ c.corrFile.url }}" class="btn btn-sm btn-primary">Download</a></td>
               </tr>
               {% empty %}
               <tr>
