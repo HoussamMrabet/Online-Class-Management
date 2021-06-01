@@ -3,7 +3,7 @@
 
 {% block sidebar %}
 <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
-  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'PFES6:student' %}?userId={{user.id}}">
     <div class="sidebar-brand-icon">
       Online Class
     </div>
@@ -11,7 +11,7 @@
   </a>
   <hr class="sidebar-divider my-0">
   <li class="nav-item active">
-    <a class="nav-link" href="{% url 'PFES6:student' %}">
+    <a class="nav-link" href="{% url 'PFES6:student' %}?userId={{user.id}}">
       <i class="fas fa-book"></i>
       <span>My Courses</span></a>
   </li>
@@ -20,13 +20,13 @@
     Actions
   </div>
   <li class="nav-item">
-    <a class="nav-link" href="{% url 'PFES6:student_join_course' %}">
+    <a class="nav-link" href="{% url 'PFES6:student_join_course' %}?userId={{user.id}}">
       <i class="fas fa-plus-square"></i>
       <span>Join Course</span>
     </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="{% url 'PFES6:student_to_do' %}">
+    <a class="nav-link" href="{% url 'PFES6:student_to_do' %}?userId={{user.id}}">
       <i class="fas fa-clipboard-check"></i>
       <span>To do</span>
     </a>
@@ -59,101 +59,37 @@
 
 <div class="row mb-3">
 
-  <a  href="Join_Course.html" class="col-xl-3 col-md-6 mb-4 text-gray-800">
+  <a  href="{% url 'PFES6:student_join_course' %}?userId={{user.id}}" class="col-xl-3 col-md-6 mb-4 text-gray-800">
     <div class="card index_card h-100">
       <div style="margin: auto;">
         <i class="fas fa-plus fa-5x"></i>
       </div>
     </div>
   </a>
-
-  <a href="course.html" class="col-xl-3 col-md-6 mb-4">
+  {% for c in join %}
+  <a href="{% url 'PFES6:student_course' %}?userId={{user.id}}&courseId={{c.classId.id}}" class="col-xl-3 col-md-6 mb-4">
     <div class="card index_card h-100">
       <div class="card-body">
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
-            <div class="h5 mb-0 font-weight-bold text-gray-800">Programmation Orienté Objet</div>
-            <div class=" mb-1 text-muted">SMI S4 2020_2021</div>
-            <div class="mt-2 mb-0 text-muted text-xs">Said Tkatek</div>
-            <div class="mt-2 mb-0 text-xs leave-course">Leave this course</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">{{c.classId.titleClass}}</div>
+            <div class=" mb-1 text-muted">{{c.classId.level}}</div>
+            <div class="mt-2 mb-0 text-muted text-xs">Prof.{{c.classId.userId.prenom}} {{c.classId.userId.prenom}}</div>
+            
+            <form method="POST" action="/student/delete_course">
+              {% csrf_token %}
+              <input type="text" name="todelete" value="{{c.id}}" hidden>
+              <input type="text" name="userId" value="{{user.id}}" hidden>
+              <button class="mt-2 mb-0 text-xs leave-course" type="submit">Leave this course</button>
+            </form>
           </div>
           <div class="col-auto" style="align-self: flex-start;">
-            <img class="img-profile rounded-circle" src="{% static 'student/img/tkatk.PNG' %}" width="58px" height="58px" alt="">
+            <img class="img-profile rounded-circle" src="{{ c.classId.userId.picture.url }}" width="58px" height="58px" alt="">
           </div>
         </div>
       </div>
     </div>
   </a>
-
-  <a href="course.html" class="col-xl-3 col-md-6 mb-4">
-    <div class="card index_card h-100">
-      <div class="card-body">
-        <div class="row no-gutters align-items-center">
-          <div class="col mr-2">
-            <div class="h5 mb-0 font-weight-bold text-gray-800">Programmation Orienté Objet</div>
-            <div class=" mb-1 text-muted">SMI S4 2020_2021</div>
-            <div class="mt-2 mb-0 text-muted text-xs">Said Tkatek</div>
-            <div class="mt-2 mb-0 text-xs leave-course">Leave this course</div>
-          </div>
-          <div class="col-auto" style="align-self: flex-start;">
-            <img class="img-profile rounded-circle" src="{% static 'student/img/tkatk.PNG' %}" width="58px" height="58px" alt="">
-          </div>
-        </div>
-      </div>
-    </div>
-  </a>
-
-  <a href="course.html" class="col-xl-3 col-md-6 mb-4">
-    <div class="card index_card h-100">
-      <div class="card-body">
-        <div class="row no-gutters align-items-center">
-          <div class="col mr-2">
-            <div class="h5 mb-0 font-weight-bold text-gray-800">Programmation Orienté Objet</div>
-            <div class=" mb-1 text-muted">SMI S4 2020_2021</div>
-            <div class="mt-2 mb-0 text-muted text-xs">Said Tkatek</div>
-            <div class="mt-2 mb-0 text-xs leave-course">Leave this course</div>
-          </div>
-          <div class="col-auto" style="align-self: flex-start;">
-            <img class="img-profile rounded-circle" src="{% static 'student/img/tkatk.PNG' %}" width="58px" height="58px" alt="">
-          </div>
-        </div>
-      </div>
-    </div>
-  </a>
-
-  <a href="course.html" class="col-xl-3 col-md-6 mb-4">
-    <div class="card index_card h-100">
-      <div class="card-body">
-        <div class="row no-gutters align-items-center">
-          <div class="col mr-2">
-            <div class="h5 mb-0 font-weight-bold text-gray-800">Programmation Orienté Objet</div>
-            <div class=" mb-1 text-muted">SMI S4 2020_2021</div>
-            <div class="mt-2 mb-0 text-muted text-xs">Said Tkatek</div>
-            <div class="mt-2 mb-0 text-xs leave-course">Leave this course</div>
-          </div>
-          <div class="col-auto" style="align-self: flex-start;">
-            <img class="img-profile rounded-circle" src="{% static 'student/img/tkatk.PNG' %}" width="58px" height="58px" alt="">
-          </div>
-        </div>
-      </div>
-    </div>
-  </a>
-
-  <a href="course.html" class="col-xl-3 col-md-6 mb-4">
-    <div class="card index_card h-100">
-      <div class="card-body">
-        <div class="row no-gutters align-items-center">
-          <div class="col mr-2">
-            <div class="h5 mb-0 font-weight-bold text-gray-800">Programmation Orienté Objet</div>
-            <div class=" mb-1 text-muted">SMI S4 2020_2021</div>
-            <div class="mt-2 mb-0 text-muted text-xs">Said Tkatek</div>
-            <div class="mt-2 mb-0 text-xs leave-course">Leave this course</div>
-          </div>
-          <div class="col-auto" style="align-self: flex-start;">
-            <img class="img-profile rounded-circle" src="{% static 'student/img/tkatk.PNG' %}" width="58px" height="58px" alt="">
-          </div>
-        </div>
-      </div>
-    </div>
-  </a>
+  {% endfor %}
+  </div>
   {% endblock %}

@@ -55,6 +55,10 @@ $(document).ready(function () {
     $('.modal').modal('show');
   });
 
+  $('#picchange').click(function(){
+    $('#picture_pick').click();
+  });
+
   $("#modalLong").click(function () {
     $('.modal').modal('show');
   });
@@ -77,6 +81,9 @@ $('.popover-dismiss').popover({
   trigger: 'focus'
 });
 
+document.querySelector("#picture_pick").onchange = function() {
+  document.querySelector("#picup").submit();
+};
 
 // Version in Sidebar
 

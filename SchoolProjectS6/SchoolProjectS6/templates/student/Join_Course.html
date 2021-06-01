@@ -3,7 +3,7 @@
 
 {% block sidebar %}
 <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
-  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'PFES6:student' %}?userId={{user.id}}">
     <div class="sidebar-brand-icon">
       Online Class
     </div>
@@ -11,7 +11,7 @@
   </a>
   <hr class="sidebar-divider my-0">
   <li class="nav-item">
-    <a class="nav-link" href="{% url 'PFES6:student' %}">
+    <a class="nav-link" href="{% url 'PFES6:student' %}?userId={{user.id}}">
       <i class="fas fa-book"></i>
       <span>My Courses</span></a>
   </li>
@@ -20,13 +20,13 @@
     Actions
   </div>
   <li class="nav-item active">
-    <a class="nav-link" href="{% url 'PFES6:student_join_course' %}">
+    <a class="nav-link" href="{% url 'PFES6:student_join_course' %}?userId={{user.id}}">
       <i class="fas fa-plus-square"></i>
       <span>Join Course</span>
     </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="{% url 'PFES6:student_to_do' %}">
+    <a class="nav-link" href="{% url 'PFES6:student_to_do' %}?userId={{user.id}}">
       <i class="fas fa-clipboard-check"></i>
       <span>To do</span>
     </a>
@@ -36,7 +36,7 @@
     Settings
   </div>
   <li class="nav-item">
-    <a class="nav-link" href="{% url 'PFES6:student_profile' %}">
+    <a class="nav-link" href="{% url 'PFES6:student_profile' %}?userId={{user.id}}">
       <i class="fas fa-user-edit"></i>
       <span>Edit Profile</span>
     </a>
@@ -62,17 +62,21 @@
     <h6 class="m-0 font-weight-bold text-primary">Join Course</h6>
   </div>
   <div class="card-body">
-    <form>
+    <form method="POST" action="/student/join_course">
+      {% csrf_token %}
+      <input type="text" name="userId" value="{{user.id}}" hidden>
       <div class="form-group">
+        
         <label for="validationServer01">Course Code</label>
         <input type="text" class="form-control" id="validationServer01"
-        placeholder="Input with Success" value="Code" required>
+        placeholder="Code" name="codeC" required>
 
-        <input type="text" class="form-control is-invalid" id="validationServer01"
-        placeholder="Input with Success" value="Code" required>
+        <!--input type="text" class="form-control is-invalid" id="validationServer01"
+        placeholder="Code" value="" required>
         <div class="invalid-feedback">
-          Please provide a valid city.
-        </div>
+          Please provide a valid code.
+        </div-->
+      </div>
       <input type="submit" value="Join" class="btn btn-primary">
     </form>
   </div>

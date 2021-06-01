@@ -3,7 +3,7 @@
 
 {% block sidebar %}
 <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
-  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'PFES6:student' %}?userId={{user.id}}">
     <div class="sidebar-brand-icon">
       Online Class
     </div>
@@ -11,7 +11,7 @@
   </a>
   <hr class="sidebar-divider my-0">
   <li class="nav-item">
-    <a class="nav-link" href="{% url 'PFES6:student' %}">
+    <a class="nav-link" href="{% url 'PFES6:student' %}?userId={{user.id}}">
       <i class="fas fa-book"></i>
       <span>My Courses</span></a>
   </li>
@@ -20,13 +20,13 @@
     Actions
   </div>
   <li class="nav-item">
-    <a class="nav-link" href="{% url 'PFES6:student_join_course' %}">
+    <a class="nav-link" href="{% url 'PFES6:student_join_course' %}?userId={{user.id}}">
       <i class="fas fa-plus-square"></i>
       <span>Join Course</span>
     </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="{% url 'PFES6:student_to_do' %}">
+    <a class="nav-link" href="{% url 'PFES6:student_to_do' %}?userId={{user.id}}">
       <i class="fas fa-clipboard-check"></i>
       <span>To do</span>
     </a>
@@ -36,7 +36,7 @@
     Settings
   </div>
   <li class="nav-item active">
-    <a class="nav-link" href="{% url 'PFES6:student_profile' %}">
+    <a class="nav-link" href="{% url 'PFES6:student_profile' %}?userId={{user.id}}">
       <i class="fas fa-user-edit"></i>
       <span>Edit Profile</span>
     </a>
@@ -79,30 +79,37 @@
                 <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{user.prenom}} {{user.nom}}</h4>
                 <p class="mb-0">SMI</p>
                 <div class="mt-2">
-                  <button class="btn btn-primary" type="button">
-                    <i class="fa fa-fw fa-camera"></i>
-                    <span>Change Picture</span>
-                  </button>
+                  <form id="picup" method="POST" action="/student/edit_picture" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="text" name="userId" value="{{user.id}}" hidden>
+                    <input type="file" id="picture_pick" name="picture" hidden>
+                    <button class="btn btn-primary" id="picchange" type="button">
+                      <i class="fa fa-fw fa-camera"></i>
+                      <span>Change Picture</span>
+                    </button>
+                  </form>
                 </div>
               </div>
             </div>
           </div>
           <div class="tab-content pt-3">
             <div class="tab-pane active">
-              <form class="form" novalidate="">
+              <form class="form" method="POST" action="/student/edit_profile">
+                {% csrf_token %}
+                <input type="text" name="userId" value="{{user.id}}" hidden>
                 <div class="row">
                   <div class="col">
                     <div class="row">
                       <div class="col">
                         <div class="form-group">
-                          <label>Full Name</label>
-                          <input class="form-control" type="text" name="name" value="">
+                          <label>First Name</label>
+                          <input class="form-control" type="text" name="prenom" value="{{user.prenom}}" required>
                         </div>
                       </div>
                       <div class="col">
                         <div class="form-group">
-                          <label>Username</label>
-                          <input class="form-control" type="text" name="username" value="">
+                          <label>Last Name</label>
+                          <input class="form-control" type="text" name="nom" value="{{user.nom}}" required>
                         </div>
                       </div>
                     </div>
@@ -110,7 +117,7 @@
                       <div class="col">
                         <div class="form-group">
                           <label>Email</label>
-                          <input class="form-control" type="text" placeholder="user@example.com">
+                          <input class="form-control" type="text" name="email" value="{{user.email}}" readonly>
                         </div>
                       </div>
                     </div>
@@ -123,7 +130,7 @@
                       <div class="col">
                         <div class="form-group">
                           <label>Current Password</label>
-                          <input class="form-control" type="password">
+                          <input class="form-control" name="oldpass" type="password" required>
                         </div>
                       </div>
                     </div>
@@ -131,13 +138,13 @@
                       <div class="col">
                         <div class="form-group">
                           <label>New Password</label>
-                          <input class="form-control" type="password">
+                          <input class="form-control" name="newpass" type="password" required>
                         </div>
                       </div>
                       <div class="col">
                         <div class="form-group">
                           <label>Confirm <span class="d-none d-xl-inline">Password</span></label>
-                          <input class="form-control" type="password"></div>
+                          <input class="form-control" name="newpass2" type="password" required></div>
                       </div>
                     </div>
                   </div>

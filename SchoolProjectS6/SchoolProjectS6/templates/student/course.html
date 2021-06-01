@@ -3,7 +3,7 @@
 
 {% block sidebar %}
   <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'PFES6:student' %}?userId={{user.id}}">
       <div class="sidebar-brand-icon">
         Online Class
       </div>
@@ -11,7 +11,7 @@
     </a>
     <hr class="sidebar-divider my-0">
     <li class="nav-item active">
-      <a class="nav-link" href="{% url 'PFES6:student' %}l">
+      <a class="nav-link" href="{% url 'PFES6:student' %}?userId={{user.id}}">
         <i class="fas fa-book"></i>
         <span>My Courses</span></a>
     </li>
@@ -20,13 +20,13 @@
       Actions
     </div>
     <li class="nav-item">
-      <a class="nav-link" href="{% url 'PFES6:student_join_course' %}">
+      <a class="nav-link" href="{% url 'PFES6:student_join_course' %}?userId={{user.id}}">
         <i class="fas fa-plus-square"></i>
         <span>Join Course</span>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="{% url 'PFES6:student_to_do' %}">
+      <a class="nav-link" href="{% url 'PFES6:student_to_do' %}?userId={{user.id}}">
         <i class="fas fa-clipboard-check"></i>
         <span>To do</span>
       </a>
@@ -36,7 +36,7 @@
       Settings
     </div>
     <li class="nav-item">
-      <a class="nav-link" href="{% url 'PFES6:student_profile' %}">
+      <a class="nav-link" href="{% url 'PFES6:student_profile' %}?userId={{user.id}}">
         <i class="fas fa-user-edit"></i>
         <span>Edit Profile</span>
       </a>
@@ -54,13 +54,13 @@
 
 {% block content_block %}
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Programmation Orienté Objet</h1>
-    <h3 class="h5 mb-0 text-gray-800">SMI - Said Tkatek</h3>
+    <h1 class="h3 mb-0 text-gray-800">{{ class.titleClass }}</h1>
+    <h3 class="h5 mb-0 text-gray-800">Prof.{{ userT.prenom }} {{ userT.nom }}</h3>
   </div>
 
   <div class="row">
     <div class="col-lg-12 mb-4">
-      <!-- Simple Tables -->
+      <!-- Course Tables -->
       <div class="card">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
         <h6 class="m-0 font-weight-bold text-primary">Courses Files</h6>
@@ -68,17 +68,16 @@
         <div class="table-responsive">
           <table class="table align-items-center table-flush">
             <tbody>
+              {% for c in course %}
               <tr>
-                <td>POO</td>
+                <td>{{c.course.titleClass}}</td>
                 <td style="text-align:right"><a href="#" class="btn btn-sm btn-primary">Download</a></td>
               </tr>
-              <tr>
-                <td>Java</td>
-                <td style="text-align:right"><a href="#" class="btn btn-sm btn-primary">Download</a></td>
-              </tr>
+              {% empty %}
               <tr>
                 <td align="center" colspan="2">No course files yet !</td>
               </tr>
+              {% endfor %}
             </tbody>
           </table>
         </div>
@@ -89,7 +88,7 @@
 
   <div class="row">
     <div class="col-lg-12 mb-4">
-      <!-- Simple Tables -->
+      <!-- TD Tables -->
       <div class="card">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
             <h6 class="m-0 font-weight-bold text-primary">TD Files</h6>
@@ -97,17 +96,16 @@
         <div class="table-responsive">
           <table class="table align-items-center table-flush">
             <tbody>
+              {% for d in TD %}
               <tr>
-                <td>POO</td>
+                <td>{{d.titleTd}}</td>
                 <td style="text-align:right"><a href="#" class="btn btn-sm btn-primary">Download</a></td>
               </tr>
-              <tr>
-                <td>Java</td>
-                <td style="text-align:right"><a href="#" class="btn btn-sm btn-primary">Download</a></td>
-              </tr>
+              {% empty %}
               <tr>
                 <td align="center" colspan="5">No TD's yet !</td>
               </tr>
+              {% endfor %}
             </tbody>
           </table>
         </div>
@@ -118,7 +116,7 @@
 
   <div class="row">
     <div class="col-lg-12 mb-4">
-      <!-- Simple Tables -->
+      <!-- TP Tables -->
       <div class="card" style="margin: auto;">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
             <h6 class="m-0 font-weight-bold text-primary">TP Files</h6>
@@ -126,17 +124,16 @@
         <div class="table-responsive">
           <table class="table align-items-center table-flush">
             <tbody>
+              {% for p in TP %}
               <tr>
-                <td>POO</td>
+                <td>{{p.titleTp}}</td>
                 <td style="text-align:right"><a href="#" class="btn btn-sm btn-primary">Download</a></td>
               </tr>
-              <tr>
-                <td>Java</td>
-                <td style="text-align:right"><a href="#" class="btn btn-sm btn-primary">Download</a></td>
-              </tr>
+              {% empty %}
               <tr>
                 <td align="center" colspan="5">No TP's yet !</td>
               </tr>
+              {% endfor %}
             </tbody>
           </table>
         </div>
@@ -144,4 +141,33 @@
       </div>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-lg-12 mb-4">
+      <!-- TP Tables -->
+      <div class="card" style="margin: auto;">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">Corrections Files</h6>
+        </div>  
+        <div class="table-responsive">
+          <table class="table align-items-center table-flush">
+            <tbody>
+              {% for co in corr %}
+              <tr>
+                <td>{{co.title}}</td>
+                <td style="text-align:right"><a href="#" class="btn btn-sm btn-primary">Download</a></td>
+              </tr>
+              {% empty %}
+              <tr>
+                <td align="center" colspan="5">No Corrections yet !</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer"></div>
+      </div>
+    </div>
+  </div>
+
 {% endblock %}

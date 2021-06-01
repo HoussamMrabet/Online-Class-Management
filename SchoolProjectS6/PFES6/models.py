@@ -30,6 +30,11 @@ class classSubject (models.Model):
     userId = models.ForeignKey(Users, on_delete=models.CASCADE)
 
 
+class JoinClass(models.Model):
+    classId = models.ForeignKey(classSubject, on_delete=models.CASCADE)
+    usersId = models.ForeignKey(Users, on_delete=models.CASCADE)
+
+
 class course (models.Model):
     desc = models.TextField(max_length=50)
     creationDateCourse = models.DateField()

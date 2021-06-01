@@ -3,7 +3,7 @@
 
 {% block sidebar %}
   <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'PFES6:student' %}?userId={{user.id}}">
       <div class="sidebar-brand-icon">
         Online Class
       </div>
@@ -11,7 +11,7 @@
     </a>
     <hr class="sidebar-divider my-0">
     <li class="nav-item">
-      <a class="nav-link" href="{% url 'PFES6:student' %}">
+      <a class="nav-link" href="{% url 'PFES6:student' %}?userId={{user.id}}">
         <i class="fas fa-book"></i>
         <span>My Courses</span></a>
     </li>
@@ -20,13 +20,13 @@
       Actions
     </div>
     <li class="nav-item">
-      <a class="nav-link" href="{% url 'PFES6:student_join_course' %}">
+      <a class="nav-link" href="{% url 'PFES6:student_join_course' %}?userId={{user.id}}">
         <i class="fas fa-plus-square"></i>
         <span>Join Course</span>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="{% url 'PFES6:student_to_do' %}">
+      <a class="nav-link" href="{% url 'PFES6:student_to_do' %}?userId={{user.id}}">
         <i class="fas fa-clipboard-check"></i>
         <span>To do</span>
       </a>
@@ -36,7 +36,7 @@
       Settings
     </div>
     <li class="nav-item">
-      <a class="nav-link" href="{% url 'PFES6:student_profile' %}">
+      <a class="nav-link" href="{% url 'PFES6:student_profile' %}?userId={{user.id}}">
         <i class="fas fa-user-edit"></i>
         <span>Edit Profile</span>
       </a>
