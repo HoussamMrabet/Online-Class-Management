@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import JoinClass, Users, classSubject, course, TP, TD, correction_TD_TP
+from .models import JoinClass, Todo, Users, classSubject, course, TP, TD, correction_TD_TP
 
 # Create your views here.
 
@@ -29,7 +29,8 @@ def student_course(request):
     td = TD.objects.filter(course=classe)
     tp = TP.objects.filter(course=classe)
     corr = correction_TD_TP.objects.filter(course=classe)
-    return render(request, 'student/course.html', {'user': user, 'userT': userT, 'class': classe, 'course': cours, 'td': td, 'tp': tp, 'corr': corr})
+    todo = Todo.objects.filter(course=classe)
+    return render(request, 'student/course.html', {'user': user, 'userT': userT, 'class': classe, 'course': cours, 'td': td, 'tp': tp, 'corr': corr, 'todo': todo})
 
 
 def student_join_course(request):

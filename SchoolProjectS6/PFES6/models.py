@@ -38,26 +38,34 @@ class JoinClass(models.Model):
 class course (models.Model):
     desc = models.TextField(max_length=50)
     creationDateCourse = models.DateField()
-    courseFile = models.FileField(null=True)
+    courseFile = models.FileField(upload_to='documents', null=True)
     course = models.ForeignKey(classSubject, on_delete=models.CASCADE)
 
 
 class TD (models.Model):
     titleTd = models.CharField(max_length=50)
     creationDateTd = models.DateField()
-    tdFile = models.FileField(null=True)
+    tdFile = models.FileField(upload_to='documents', null=True)
     course = models.ForeignKey(classSubject, on_delete=models.CASCADE)
 
 
 class TP (models.Model):
     titleTp = models.CharField(max_length=50)
     creationDateTp = models.DateField()
-    tpFile = models.FileField(null=True)
+    tpFile = models.FileField(upload_to='documents', null=True)
     course = models.ForeignKey(classSubject, on_delete=models.CASCADE)
 
 
 class correction_TD_TP (models.Model):
     title = models.CharField(max_length=50)
     creationDateTdTp = models.DateField()
-    corrFile = models.FileField(null=True)
+    corrFile = models.FileField(upload_to='documents', null=True)
+    course = models.ForeignKey(classSubject, on_delete=models.CASCADE)
+
+
+class Todo(models.Model):
+    title = models.CharField(max_length=50)
+    creationDateTodo = models.DateField()
+    TodoTFile = models.FileField(upload_to='documents', null=True)
+    TodoSFile = models.FileField(upload_to='documents', null=True)
     course = models.ForeignKey(classSubject, on_delete=models.CASCADE)
