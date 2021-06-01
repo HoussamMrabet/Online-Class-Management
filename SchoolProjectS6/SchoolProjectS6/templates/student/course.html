@@ -100,10 +100,10 @@
         <div class="table-responsive">
           <table class="table align-items-center table-flush">
             <tbody>
-              {% for d in TD %}
+              {% for d in td %}
               <tr>
                 <td>{{d.titleTd}}</td>
-                <td style="text-align:right"><a href="{{ c.tdFile.url }}" class="btn btn-sm btn-primary">Download</a></td>
+                <td style="text-align:right"><a href="{{ d.tdFile.url }}" class="btn btn-sm btn-primary">Download</a></td>
               </tr>
               {% empty %}
               <tr>
@@ -128,10 +128,10 @@
         <div class="table-responsive">
           <table class="table align-items-center table-flush">
             <tbody>
-              {% for p in TP %}
+              {% for p in tp %}
               <tr>
                 <td>{{p.titleTp}}</td>
-                <td style="text-align:right"><a href="{{ c.tpFile.url }}" class="btn btn-sm btn-primary">Download</a></td>
+                <td style="text-align:right"><a href="{{ p.tpFile.url }}" class="btn btn-sm btn-primary">Download</a></td>
               </tr>
               {% empty %}
               <tr>
@@ -159,7 +159,7 @@
               {% for co in corr %}
               <tr>
                 <td>{{co.title}}</td>
-                <td style="text-align:right"><a href="{{ c.corrFile.url }}" class="btn btn-sm btn-primary">Download</a></td>
+                <td style="text-align:right"><a href="{{ co.corrFile.url }}" class="btn btn-sm btn-primary">Download</a></td>
               </tr>
               {% empty %}
               <tr>
@@ -186,8 +186,8 @@
             <tbody>
               {% for t in todo %}
               <tr>
-                <td><a href="#">{{ t.title }}</a></td>
-                <td style="text-align:center"><a href="{{ t.todoTFile.url }}" class="btn btn-sm btn-primary">Download</a></td>
+                <td>{{ t.title }}</td>
+                <td style="text-align:center"><a href="{{ t.TodoTFile.url }}" class="btn btn-sm btn-primary">Download</a></td>
                 <td style="text-align:right"><a href="#" class="btn btn-sm btn-success">Put your report</a></td>
               </tr>
               {% empty %}

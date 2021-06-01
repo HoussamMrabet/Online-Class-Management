@@ -81,13 +81,35 @@
           </thead>
           <tbody>
             {% for t in todo %}
-            <tr>
-              <td><a href="#">RA0449</a></td>
-              <td>Prof{{ t.course.userId.prenom }} {{ t.course.userId.prenom }}</td>
-              <td>{{ t.course.titleClass}}</td>
-              <td><a href="{{ c.todoTFile.url }}" class="btn btn-sm btn-primary">Download</a></td>
-              <td><a href="#" class="btn btn-sm btn-success">Put your report</a></td>
-            </tr>
+              {% for j in join %}
+                {% if t.course.id == j.classId.id %}
+                  <tr>
+                    <td>{{ t.title }}</td>
+                    <td>Prof.{{ t.course.userId.prenom }} {{ t.course.userId.nom }}</td>
+                    <td>{{ t.course.titleClass}}</td>
+                    <td><a href="{{ t.TodoTFile.url }}" class="btn btn-sm btn-primary">Download</a></td>
+                    <form id="todoup{{t.id}}" method="POST" action="/student/put_todo" enctype="multipart/form-data">
+                      {% csrf_token %}
+                      <input type="text" name="userId" value="{{user.id}}" hidden>
+                      <input type="text" name="todoId" value="{{t.id}}" hidden>
+                      <input type="file" id="todo_pick{{t.id}}" name="todo" hidden>
+                      {% if not t.TodoSFile %}
+                      <td><button id="todochange{{t.id}}" class="btn btn-sm btn-warning" type="button">Put your report</button></td>
+                      {% else %}
+                      <td><button id="todochange{{t.id}}" class="btn btn-sm btn-success" type="button" disabled>done</button></td>
+                      {% endif %}
+                    </form>
+                  </tr>
+                  <script>
+                    document.querySelector("#todo_pick{{t.id}}").onchange = function() {
+                      document.querySelector("#todoup{{t.id}}").submit();
+                    };
+                    document.querySelector('#todochange{{t.id}}').onclick = function(){
+                      document.querySelector('#todo_pick{{t.id}}').click();
+                    };
+                  </script>
+                {% endif %}
+              {% endfor %}
             {% empty %}
             <tr>
               <td align="center" colspan="5">No Homeworks yet !</td>

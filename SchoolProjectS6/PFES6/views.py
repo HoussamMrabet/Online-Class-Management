@@ -55,7 +55,8 @@ def student_join_course(request):
                 td = TD.objects.filter(course=classe)
                 tp = TP.objects.filter(course=classe)
                 corr = correction_TD_TP.objects.filter(course=classe)
-                return render(request, 'student/course.html', {'user': user, 'userT': userT, 'class': classe, 'course': cours, 'td': td, 'tp': tp, 'corr': corr})
+                todo = Todo.objects.filter(course=classe)
+                return render(request, 'student/course.html', {'user': user, 'userT': userT, 'class': classe, 'course': cours, 'td': td, 'tp': tp, 'corr': corr, 'todo': todo})
         else:
             return render(request, 'student/join_course.html', {'user': user, 'c': True})
     else:
@@ -66,7 +67,30 @@ def student_to_do(request):
     if request.method == 'GET':
         id = request.GET.get('userId')
         user = Users.objects.get(id=id)
-        return render(request, 'student/to_do.html', {'user': user})
+        join = JoinClass.objects.filter(userId=user)
+        todo = Todo.objects.all()
+        return render(request, 'student/to_do.html', {'user': user, 'todo': todo, 'join': join})
+    else:
+        return render(request, 'student/to_do.html')
+
+
+def student_put_todo(request):
+    if request.method == 'POST':
+        id = request.POST.get('todoId')
+        userId = request.POST.get('userId')
+        todo = Todo.objects.get(id=id)
+        title = todo.title
+        creationDateTodo = todo.creationDateTodo
+        TodoTFile = todo.TodoTFile
+        course = todo.course
+        TodoSFile = request.FILES.get('todo')
+        todoUp = Todo(id=id, title=title, creationDateTodo=creationDateTodo,
+                      TodoTFile=TodoTFile, TodoSFile=TodoSFile, course=course)
+        todoUp.save()
+        user = Users.objects.get(id=userId)
+        join = JoinClass.objects.filter(userId=user)
+        todo = Todo.objects.all()
+        return render(request, 'student/to_do.html', {'user': user, 'todo': todo, 'join': join})
     else:
         return render(request, 'student/to_do.html')
 
