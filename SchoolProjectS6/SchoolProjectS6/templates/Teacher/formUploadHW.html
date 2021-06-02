@@ -1,36 +1,36 @@
 {% extends "Teacher/base.html" %}
- 
 
-        
-      {% block content %}
+{% block content %}
           <div class="row" >
             <div class="col-lg-6" style="margin-left : 20%;">
+         
               <div class="card mb-4" >
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Upload TP</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Send a homeWork todo</h6>
                 </div>
                 <div class="card-body" >
-                  <form method="POST" action="{% url 'PFES6:addingTP' %}"  enctype="multipart/form-data">
+                  <form method="POST" action="{% url 'PFES6:sendingHW' %}"  enctype="multipart/form-data">
                     {% csrf_token %}
                     <input type="hidden" name="idu" value="{{ user.id }}">
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">The TP description</label>
-					  <textarea name="desc" class="form-control" id="exampleInputPassword1" placeholder="Description" rows="4" ></textarea>
                    
-                    </div>
-				
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">The course description</label>
+                        <textarea name="desc" class="form-control" id="exampleInputPassword1" placeholder="Description" rows="4"></textarea>
+                     
+                      </div>
                  <div class="form-group">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="customFile" name="fileTP" required>
+                        <input type="file" class="custom-file-input" id="customFile" name="homeworkS" required>
                         <label class="custom-file-label" for="customFile">Choose file</label>
                       </div>
                     </div> 
                 <div class="form-group">
-                    <label for="select2SinglePlaceholder">Which course you would like to add this TP</label>
-                    <select class="select2-single-placeholder form-control" name="course" id="select2SinglePlaceholder">
-                      <option value="">Select</option>
+                    <label for="select2SinglePlaceholder">Which course you would like to add this homework</label>
+                    <select class="select2-single-placeholder form-control" name="course" id="select2SinglePlaceholder" required>
+                      <option >Select</option>
                       {% for c in urCourses %}
                       <option >{{ c.titleClass }}</option>
+                      
                       {% endfor %}
                     </select>
                   </div>
@@ -49,9 +49,8 @@
 
             </div>
           </div>
- {% endblock %}
-    
- {% block jsLinks %}
+  {% endblock %}
+  {% block jsLinks %}
   
      
  <script>

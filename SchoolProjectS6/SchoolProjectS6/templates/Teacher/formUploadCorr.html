@@ -10,8 +10,9 @@
                   <h6 class="m-0 font-weight-bold text-primary">Upload Correction</h6>
                 </div>
                 <div class="card-body" >
-                  <form method="POST" action="">
-                
+                  <form method="POST" action="{% url 'PFES6:addingCorr' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="hidden" name="idu" value="{{ user.id }}">
                     <div class="form-group">
                       <label for="exampleInputPassword1">The correction file description</label>
 					  <textarea name="desc" class="form-control" id="exampleInputPassword1" placeholder="Description" rows="4"></textarea>
@@ -28,9 +29,9 @@
                     <label for="select2SinglePlaceholder">Which course you would like to add this Correction</label>
                     <select class="select2-single-placeholder form-control" name="course" id="select2SinglePlaceholder">
                       <option value="">Select</option>
-                      <option value="Maluku Utara">Maluku Utara</option>
-                      <option value="Papua Barat">Papua Barat</option>
-                      <option value="Papua">Papua</option>
+                      {% for c in urCourses %}
+                      <option >{{ c.titleClass }}</option>
+                      {% endfor %}
                     </select>
                   </div>
                     <input type="submit" class="btn btn-primary" value="Upload" name="send">
@@ -51,3 +52,18 @@
  {% endblock %}
          
 
+ {% block jsLinks %}
+  
+     
+ <script>
+  $('#customFile').on('change',function(){
+      //get the file name
+      var fileName = $(this).val().replace('C:\\fakepath\\', " ");
+      //replace the "Choose a file" label
+      $(this).next('.custom-file-label').html(fileName);	
+  })
+
+
+
+</script>
+{% endblock %} 

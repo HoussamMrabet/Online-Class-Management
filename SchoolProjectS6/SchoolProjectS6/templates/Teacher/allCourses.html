@@ -1,6 +1,19 @@
 
 {% extends "Teacher/base.html" %}
+{% load static %}
+{% block cssD %}
+<style>
+  .card {
+cursor: pointer;
+transition: all 0.5s;
+}
 
+.card:hover {
+transform: scale(1.05);
+}
+</style>
+
+{% endblock %}
 
 {% block content %}
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -12,34 +25,34 @@
            <div class="col-xl-3 col-md-6 mb-4">
              <div class="card h-100">
                 <div style="margin: auto;">
-				 <a href="formAddCourse.html"> 
+				 <a href="{% url 'PFES6:addCourseSubject' %}?uId={{user.id}}"> 
                   <i class="fas fa-plus fa-5x"></i>
 				  </a>
                 </div>
               </div>
             </div> 
-          
+          {% for c in classe %}
             <div class="col-xl-3 col-md-6 mb-4">
               <div class="card h-100">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-					<a href="courseDetails.html">
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">Programmation Oriente Objet</div>
-                      <div class=" mb-1">SMI S4 2020_2021</div>
+					<a href="{% url 'PFES6:displayCourseDetails' %}?uId={{user.id}}&idC={{ c.id }}">
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ c.titleClass }}</div>
+                      <div class=" mb-1">{{ c.level }} <br> {{ c.creationDateClasse }}</div>
 					   </a>
-                     <a href=""> <div class="mt-2 mb-0 text-muted text-xs">Remove this course</div></a>
+                     <a href="{% url 'PFES6:deleteCourse' %}?uId={{user.id}}&idC={{ c.id }}"> <div class="mt-2 mb-0 text-muted text-xs">Remove this course</div></a>
 					 
                     </div>
                     <div class="col-auto" style="align-self: flex-start;">
-                      <img class="img-profile rounded-circle" src="img/logo/man.jpg" width="58px" height="58px" alt="">
-					  <div class="mt-2 mb-0 text-muted text-xs">Said Tkatek</div>
+                      <img class="img-profile rounded-circle" src="{{ user.picture.url}}" width="58px" height="58px" alt="">
+					  <div class="mt-2 mb-0 text-muted text-xs">{{user.nom}} {{user.prenom}}</div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-           
+           {% endfor %}
            
           </div>
 {% endblock %}

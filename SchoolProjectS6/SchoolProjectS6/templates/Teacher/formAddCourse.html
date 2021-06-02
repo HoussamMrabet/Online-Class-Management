@@ -10,22 +10,23 @@
                   <h6 class="m-0 font-weight-bold text-primary">Add a course</h6>
                 </div>
                 <div class="card-body" >
-                  <form method="POST" action="">
+                  <form method="POST" action="{% url 'PFES6:addCourse' %}">{% csrf_token %}
+                    <input type="hidden" name="idus" value="{{ user.id }}">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Title </label>
                       <input type="text" class="form-control" name="titleC" id="exampleInputEmail1" aria-describedby="emailHelp"
-                        placeholder="Course name">
+                        placeholder="Course name" required>
     
                     </div>
 					 <div class="form-group">
                       <label for="exampleInputEmail1">Level </label>
-                      <input type="text" class="form-control" name="titleC" id="exampleInputEmail1" aria-describedby="emailHelp"
-                        placeholder="example : SMI S2">
+                      <input type="text" class="form-control" name="levelC" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="example : SMI S2" required>
     
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Code</label>
-                      <input type="text" class="form-control" id="exampleInputPassword1" name="codeC" placeholder="Code for your course">
+                      <input type="text" class="form-control" id="exampleInputPassword1" name="codeC" placeholder="Code for your course" required>
                     </div>
 					  
         

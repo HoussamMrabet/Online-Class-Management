@@ -20,21 +20,21 @@
                     </thead>
                     <tbody>
                      
-                     
+                     {% for c in courses %}
                       <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-             
-                        <td><a href="" class="btn btn-sm btn-primary">Delete</a></td>
+                        <td>{{ c.desc }}</td>
+                        <td>{{ c.creationDateCourse }}</td>
+                        <td><a href="{{ c.courseFile.url }}" download>{{ c.courseFile }}</a></td>
+                        <td><a href="{% url 'PFES6:deleteCourseFile' %}?uId={{user.id}}&idC={{ classe.id }}&idFileC={{ c.id }}" class="btn btn-sm btn-primary">Delete</a></td>
                       </tr>
+                      {% endfor %}
                     </tbody>
                   </table>
                 </div>
                 <div class="card-footer"></div>
               </div>
             </div>
-
+<br><br>
 
       <div class="col-lg-12 mb-4">
               <!-- Simple Tables -->
@@ -55,13 +55,14 @@
                     <tbody>
                      
                      
+                      {% for td in tdFiles %}
                       <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-             
-                        <td><a href="" class="btn btn-sm btn-primary">Delete</a></td>
+                        <td>{{ td.titleTd }}</td>
+                        <td>{{ td.creationDateTd }}</td>
+                        <td><a href="{{ td.tdFile.url }}" download>{{ td.tdFile }}</a></td>
+                        <td><a href="{% url 'PFES6:deleteTD' %}?uId={{user.id}}&idC={{ classe.id }}&idFileTD={{ td.id }}" class="btn btn-sm btn-primary">Delete</a></td>
                       </tr>
+                      {% endfor %}
                     </tbody>
                   </table>
                 </div>
@@ -69,7 +70,7 @@
               </div>
             </div>
            
-		   
+            <br><br>
 		   <div class="col-lg-12 mb-4">
               <!-- Simple Tables -->
               <div class="card">
@@ -88,14 +89,14 @@
                     </thead>
                     <tbody>
                      
-                     
+                      {% for tp in tpFiles %}
                       <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-             
-                        <td><a href="" class="btn btn-sm btn-primary">Delete</a></td>
+                        <td>{{ tp.titleTp }}</td>
+                        <td>{{ tp.creationDateTp }}</td>
+                        <td><a href="{{ tp.tpFile.url }}" download>{{ tp.tpFile }}</a></td>
+                        <td><a href="{% url 'PFES6:deleteTP' %}?uId={{user.id}}&idC={{ classe.id }}&idFileTP={{ tp.id }}" class="btn btn-sm btn-primary">Delete</a></td>
                       </tr>
+                      {% endfor %}
                     </tbody>
                   </table>
                 </div>
@@ -103,7 +104,7 @@
               </div>
             </div>
 			
-			
+            <br><br>
 			<div class="col-lg-12 mb-4">
               <!-- Simple Tables -->
               <div class="card">
@@ -123,20 +124,21 @@
                     <tbody>
                      
                      
+                      {% for corr in corrFiles %}
                       <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-             
-                        <td><a href="" class="btn btn-sm btn-primary">Delete</a></td>
+                        <td>{{ corr.title }}</td>
+                        <td>{{ corr.creationDateTdTp }}</td>
+                        <td><a href="{{ corr.corrFile.url }}" download>{{ corr.corrFile }}</a></td>
+                        <td><a href="{% url 'PFES6:deleteCorr' %}?uId={{user.id}}&idC={{ classe.id }}&idFileCorr={{ corr.id }}" class="btn btn-sm btn-primary">Delete</a></td>
                       </tr>
+                      {% endfor %}
                     </tbody>
                   </table>
                 </div>
                 <div class="card-footer"></div>
               </div>
             </div>
-			   
+            <br><br>
 		   <div class="col-lg-12 mb-4">
               
               <div class="card">
@@ -147,22 +149,27 @@
                   <table class="table align-items-center table-flush">
                     <thead class="thead-light">
                       <tr>
-                        <th>Title</th>
+                        <th>title</th>
                         <th>Date of creation</th>
-                        <th>File to download</th>
-                        <th>Action</th>
+                        <th>Homework file todo</th>
+                        <th>Student's homework</th>
                       </tr>
                     </thead>
                     <tbody>
                      
-                     
-                      <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-             
-                        <td><a href="" class="btn btn-sm btn-primary">Delete</a></td>
-                      </tr>
+                      
+                {% for hm in homeWorks %}  
+                    {% if hm.TodoSFile == '' %}
+
+                    {% else %}
+                     <tr>
+                      <td>{{ hm.title }}</td>
+                      <td>{{ hm.creationDateTodo }}</td>
+                      <td><a href="{{ hm.TodoTFile.url }}" download>{{ hm.TodoTFile }}</a></td>
+                      <td><a href="{{ hm.TodoSFile.url }}" download>{{ hm.TodoSFile }}</a></td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
                     </tbody>
                   </table>
                 </div>

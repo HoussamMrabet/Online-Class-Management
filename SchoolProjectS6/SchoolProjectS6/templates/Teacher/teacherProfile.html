@@ -1,7 +1,7 @@
 
    {% extends "Teacher/base.html" %}
   
-
+   {% load static %}
 
          
 {% block content %}
@@ -17,8 +17,9 @@
         
             <div class="box-body">
                      <div class="col-sm-6">
-                     <div style="margin-left:8%;margin-top:-5%;" > <img  src="img/logo/man.jpg" name="imge" id="profile-image1" class="img-responsive" width="40%" height="40%" /> 
-                
+                     
+                     <div style="margin-left:8%;margin-top:-5%;" > <img  src="{{ user.picture.url}}" name="imge" id="profile-image1" class="img-responsive" width="40%" height="40%" /> 
+             
                </div>
           <br> 
             </div>
@@ -29,19 +30,19 @@
             <div class="clearfix"></div>
             <hr style="margin:5px 0 5px 0;">
 			<br>
-            <div class="col-sm-5 col-xs-6 tital " ><b>First name :  </b>bgrbt</div>
+            <div class="col-sm-5 col-xs-6 tital " ><b>First name :  </b>{{ user.prenom}}</div>
      <div class="clearfix"></div>
 <div class="bot-border"></div>
     <br>        
-<div class="col-sm-5 col-xs-6 tital " ><b>Last name : </b>vrvrt</div>
+<div class="col-sm-5 col-xs-6 tital " ><b>Last name : </b>{{ user.nom}}</div>
      <div class="clearfix"></div>
 <div class="bot-border"></div>
 <br>
-<div class="col-sm-5 col-xs-6 tital " ><b>Email : </b>vrvrt</div>
+<div class="col-sm-5 col-xs-6 tital " ><b>Email : </b>{{ user.email}}</div>
   <div class="clearfix"></div>
 <div class="bot-border"></div>
 <br>
-<div class="col-sm-7" id="info" style="margin-left:78%"> <a class="btn btn-warning" href="formUpdateData.html" >Update data</a></div>
+<div class="col-sm-7" id="info" style="margin-left:78%"> <a class="btn btn-warning" href="{% url 'PFES6:displayData' %}?userE={{user.email}}" >Update data</a></div>
   <div class="clearfix"></div>
 <div class="bot-border"></div>
     <br>
